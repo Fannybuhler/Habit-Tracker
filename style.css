@@ -1,0 +1,10 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(#ffffff, #E9EBEF);
+}
