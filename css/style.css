@@ -1,0 +1,66 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(#ffffff, #E9EBEF);
+}
+
+.logo {
+    width: 30vw;
+    margin: 10px 0 0 10px;
+}
+
+.habit-btn-container {
+    display: grid;
+    margin: 5% 10% 0 10%;
+    align-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 300px;
+}
+.habit-btn{
+    height: 200px;
+    width: 200px;
+    background: transparent;
+    border: 15px solid #28BFCF;
+    box-sizing: border-box;
+    border-radius: 50%;
+    font-size: 9em;
+    justify-self:center;
+    /* align-self: center; */
+    margin: auto;
+    filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.25));
+}
+
+
+.habit-calendar-container {
+    display: grid;
+    margin: 5% 5% 0 5%;
+    grid-template-columns: 200px repeat(31, 1fr);
+    grid-template-rows: 50px 50px 200px 200px;
+    text-align: center;
+}
+
+.days {
+    font-size: 0.5rem;
+}
+.arrows-month-container {
+    margin-top: 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+}
+.calendar-arrow {
+    background: transparent;
+    border: none;
+}
+#right {
+    transform: rotate(180deg);
+}
+.current-month {
+    text-align: center;
+    font-size: 5em;
+}
