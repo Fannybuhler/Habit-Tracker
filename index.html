@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Track your daily habits</title>
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="script" defer href="js/script.js">
+    <link rel="stylesheet" href="css/modal.css" type="text/css">
+    <script rel="script" defer src="js/script.js"></script>
+    <script rel="script" defer src="js/modal.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
 </head>
 <body>
-       
+
     <header class="home">
         <img src="images/Logo.png" alt="Logotype that reads 'Track your daily habits'" class="logo">
     </header>
@@ -43,9 +46,6 @@
 
     <section class="habit-calendar-container">
         <p></p>
-        <p class="days">Thu</p>
-        <p class="days">Fri</p>
-        <p class="days">Sat</p>
         <p class="days">Sun</p>
         <p class="days">Mon</p>
         <p class="days">Tue</p>
@@ -113,7 +113,14 @@
         <!--Section for the habit calendar
         
         -->
-
     </section>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Some text in the Modal..</p>
+        </div>
+    </div>
 </body>
 </html>
