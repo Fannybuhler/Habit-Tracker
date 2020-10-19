@@ -11,63 +11,180 @@
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
-  
-  /* Modal Content/Box */
-.modal-content {
-background-color: #fefefe;
-margin: 15% auto; /* 15% from the top and centered */
-padding: 20px;
-border: 1px solid #888;
-width: 80%; /* Could be more or less, depending on screen size */
+.modal-content .input-container{
+  margin:20px  auto;
+  width:30vw;
+  text-align:left;
 }
-
+  
 /* The Close Button */
 .close {
-color: #aaa;
-float: right;
-font-size: 28px;
-font-weight: bold;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-color: black;
-text-decoration: none;
-cursor: pointer;
+.close:hover,.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 /* Modal Header */
 .modal-header {
-padding: 2px 16px;
-background-color: #5cb85c;
-color: white;
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
 }
 
 /* Modal Body */
-.modal-body {padding: 2px 16px;}
+.modal-body {
+  padding: 2px 16px;
+}
 
 /* Modal Footer */
 .modal-footer {
-padding: 2px 16px;
-background-color: #5cb85c;
-color: white;
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
 }
 
 /* Modal Content */
 .modal-content {
-position: relative;
-background-color: #fefefe;
-margin: auto;
-padding: 0;
-border: 1px solid #888;
-width: 80%;
-box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-animation-name: animatetop;
-animation-duration: 0.4s
+  position: relative;
+  background: linear-gradient(#ffffff, #E9EBEF);
+  margin: 20vh auto;
+  padding: 40px;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius:15px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  justify-content: center;
+  text-align:center;
+  
+}
+/* Modal Content */
+.modal-content h1 {
+  font-weight: normal;
+  margin: 10px auto;
+  text-align: center;
+  
+}
+
+
+
+/* Textarea design from https://codepen.io/kpourdeilami/pen/KDepk */
+.modal-content textarea {
+  margin: 0 auto;
+  width :100%;
+  height:auto;
+  display: block;
+  max-width:600px;
+  color:#999;
+  font-weight:400;
+  font-size:1em;
+  font-family:'Ubuntu', Helvetica, Arial, sans-serif;
+  background:#fff;
+  border-radius:3px;
+  line-height:2em;
+  border:none;
+  box-shadow:0px 0px 5px 1px rgba(0,0,0,0.1);
+  padding:30px;
+  -webkit-transition: height 2s ease;
+  -moz-transition: height 2s ease;
+  -ms-transition: height 2s ease;
+  -o-transition: height 2s ease;
+  transition: height 2s ease;
+}
+.modal-content .text-input{
+
+  background: #fff;
+  color: black;
+  font: inherit;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+  border: 0;
+  outline: 0;
+  padding: 22px 18px;
+  display:block;
+  width:30vw;
+
+}
+.modal-content label{
+  display:block;
+  float:left;
+}
+
+.modal-content input:focus{
+  border: 2px solid black;
+}
+/* The container must be positioned relative: */
+.custom-select {
+  position: relative;
+  font-family: Arial;
+  margin:20px 0;
+  width:10vw;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+/* Dropdown button design from : https://www.w3schools.com/howto/tryit.asp?filename=tryhow_custom_select */
+.select-selected {
+  background-color: white;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: black transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent black transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+  color: black;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: white;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Add Animation */
 @keyframes animatetop {
-from {top: -300px; opacity: 0}
-to {top: 0; opacity: 1}
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
 }
