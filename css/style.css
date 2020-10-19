@@ -34,6 +34,9 @@ body {
     margin: auto;
     filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.25));
 }
+.habit-btn:hover {
+    filter: drop-shadow(0px 10px 15px rgba(37, 37, 37, 0.8));
+}
 
 
 .habit-calendar-container {
@@ -60,9 +63,23 @@ body {
     background: transparent;
     border: none;
 }
+
+.calendar-arrow:hover {
+    
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:focus {
+    outline: none;
+}
+
 #right {
     transform: rotate(180deg);
 }
+
 .current-month {
     text-align: center;
     font-size: 5em;
