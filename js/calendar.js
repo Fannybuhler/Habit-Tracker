@@ -55,25 +55,25 @@ function mod(n, m) {
     return ((n % m) + m) % m;
   }
 
-const mm = today.getMonth(); // January = 0, December = 11
-const yyyy = today.getFullYear();
+const todayMonth = today.getMonth(); // January = 0, December = 11
+const todayYear = today.getFullYear();
 
 // PARAM month: the 'month-distance' from todays month.
 // RETURN monthArr: a array with all the days in the month
-function getWeekDayArr(month){
+function getWeekDayArr(monthDistance){
     var monthArr = []
-    var y = yyyy;
-    month +=mm;
-    if(month>11){
+    var y = todayYear;
+    monthDistance +=todayMonth;
+    if(monthDistance>11){
         // 
-        y += Math.floor(month/12)
-        month = mod(month,12);
+        y += Math.floor(monthDistance/12)
+        monthDistance = mod(monthDistance,12);
     }
-    if(month<0){// If the month is negative
-        y+=Math.floor(month/12)
-        month = mod(month,12);
+    if(monthDistance<0){// If the month is negative
+        y+=Math.floor(monthDistance/12)
+        monthDistance = mod(monthDistance,12);
     }
-    var firstDay = new Date(y, month, 1);// first day of the selected month
+    var firstDay = new Date(y, monthDistance, 1);// first day of the selected month
     var fdDayOfWeek = firstDay.getDay()
     for (const x of Array(31).keys()) {
         monthArr.push(weekDays[mod((fdDayOfWeek+x),7)]);
@@ -83,6 +83,6 @@ function getWeekDayArr(month){
 // console.log("This month: "+mm)
 
 
-// for (const x of Array(31).keys()) {
-//     console.log(getWeekDayArr(-x))
-// }
+for (const x of Array(31).keys()) {
+    console.log(getWeekDayArr(-x))
+}
