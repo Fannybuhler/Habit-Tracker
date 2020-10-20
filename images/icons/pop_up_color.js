@@ -2,8 +2,8 @@ let habitColors = ["#28BFCF", "#E9EBEF", "#4ACDD9", "#5B7EDF", "#4EE961", "#88C7
 
 document.querySelector('.dropbtn').addEventListener('click', showDropdown);
 
-function colorDrop() {
-    let select = document.querySelector('.dropdownContent');
+(function () {
+    let select = document.getElementById('color');
     
     for(var i = 0; i < habitColors.length; i++) {
         let opt = habitColors[i];
@@ -13,7 +13,7 @@ function colorDrop() {
         color.style.backgroundColor = opt;
         select.appendChild(color);
     }
-}
+})();
 
 let pickedColor = document.querySelector(".colorBtn")
 
@@ -34,10 +34,10 @@ loopColors();
 
 // Loops throught the array of created elements
 function loopColors() {
-    let iconClick = document.querySelectorAll('.colorBtn');
+    let colorClick = document.querySelectorAll('.colorBtn');
 
-    for(var i = 0; i < iconClick.length; i++) {
-        iconClick[i].addEventListener('click', colorDisplay);
+    for(var i = 0; i < colorClick.length; i++) {
+        colorClick[i].addEventListener('click', colorDisplay);
     }
 }
 
