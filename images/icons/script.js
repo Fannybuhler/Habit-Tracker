@@ -56,18 +56,22 @@ let iconArr = [
 
 document.querySelector('.dropbtn').addEventListener('click', showDropdown);
 
-function iconDrop() {
+// Creates the elements in HTML from the iconArr
+(function () {
     let select = document.querySelector('.dropdownContent');
     
     for(var i = 0; i < iconArr.length; i++) {
         let opt = iconArr[i];
         let icon = document.createElement('a');
         icon.innerHTML = opt;
-        
+        icon.className = 'icons'
+        icon.id = i
         select.appendChild(icon);
     }
-}
+    
+})();
 
+// Changes the style and displays the dropdown
 function showDropdown(){
     let dropBtn = document.querySelector(".dropdownContent");
     if(dropBtn.classList == 'dropdownContent hidden') {
@@ -76,8 +80,33 @@ function showDropdown(){
     } else if(dropBtn.classList == 'dropdownContent showing') {
         dropBtn.classList.remove('showing');
         dropBtn.classList.add('hidden');
-    }
-    
+    } 
+    loopIcon();
 };
 
-iconDrop();
+// Loops throught the array of created elements
+function loopIcon() {
+    let iconClick = document.querySelectorAll('.icons');
+
+    for(var i = 0; i < iconClick.length; i++) {
+        iconClick[i].addEventListener('click', iconDisplay);
+    }    
+}
+
+// Selects and displays the chosen icon
+function iconDisplay() {
+    let startText = document.querySelector('.dropbtn');
+    startText.innerHTML = iconArr[this.id];
+    showDropdown('dropdownContent showing');
+}
+
+
+
+
+
+
+
+
+
+
+
