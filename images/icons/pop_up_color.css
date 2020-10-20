@@ -5,7 +5,8 @@
     font-size: 16px;
     border: none;
     cursor: pointer;
-    width: 150px;  
+    width: 150px; 
+    outline: none;
 }
   
 .dropdown {
@@ -31,9 +32,8 @@
     width: 450px;
     height: 300px;
     overflow: scroll;
-    justify-content: center;
+    
 }
-
 .hidden {
     display: none; 
 }
@@ -47,12 +47,11 @@
     background-color: #f1f1f1    
 }
 
-svg {
-    height: 30px;
-    width: 30px;
+.colorBtn {
+    height: 90px;
+    width: 90px;
     padding: 10px;
-    border: 1px solid #000;
-}
-svg:hover {
-    cursor: pointer;
+    margin: 10px;
+    border-style: none;
+    box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.2);;
 }

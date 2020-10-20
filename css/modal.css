@@ -74,6 +74,18 @@
   
 }
 
+.add-habit-btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5%;
+}
+
+.add-habit-btn {
+    border: 5px solid #28BFCF;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1rem
+}
 
 
 /* Textarea design from https://codepen.io/kpourdeilami/pen/KDepk */
