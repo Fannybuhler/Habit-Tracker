@@ -1,18 +1,14 @@
+
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-var today = new Date();
-var dayOfWeek = today.getDay();
+const days = ["Sun","Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] // Weekdays starts with Sunday, USA style
 
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
+const todayDate = new Date();
 
-// adjusts index-position from array
-mm -= 1;
+var mm = String(todayDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+var monthCounter = 0; // Used to call getWeekDayArr()
+renderCalendarHabits()
 
-console.log(mm);
-console.log(months[mm]);
-console.log(today);
+mm -= 1;// adjusts index-position from array
 
 //Shows current month
 document.querySelector(".current-month").innerHTML = months[mm];
@@ -24,8 +20,9 @@ arrowLeft.addEventListener("click", function(){
         mm = 12;
     }
     mm -= 1;
-    console.log(mm);
+    monthCounter-=1
     document.querySelector(".current-month").innerHTML = months[mm];
+    changeDays(monthCounter);
 });
 
 const arrowRight = document.getElementById("arrow-right");
@@ -34,30 +31,20 @@ arrowRight.addEventListener("click", function(){
         mm =- 1;
     }
     mm += 1;
-    console.log(mm);
+    monthCounter+=1
     document.querySelector(".current-month").innerHTML = months[mm];
+    changeDays(monthCounter);
 });
-
-// var dayOfWeek = today.getDay();
-// var dd = String(today.getDate()).padStart(2, '0');
-
-// var dayWeekArr = []
-
-// var d1WeekDay = mod(dayOfWeek-(mod(dd,7)-1),7)
-
-
-var today = new Date();
-const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] // Weekdays starts with Sunday, USA style
-// var dd = String(firstDay.getDate()).padStart(2, '0');
 
 // I created my own modulus function because JS mod is slow and inaccurate
 function mod(n, m) {
     return ((n % m) + m) % m;
   }
 
-const todayMonth = today.getMonth(); // January = 0, December = 11
-const todayYear = today.getFullYear();
+const todayMonth = todayDate.getMonth(); // January = 0, December = 11
+const todayYear = todayDate.getFullYear();
 
+changeDays(monthCounter) // update the dayOfWeek element in HTML initialy
 // PARAM month: the 'month-distance' from todays month.
 // RETURN monthArr: a array with all the days in the month
 function getWeekDayArr(monthDistance){
@@ -76,13 +63,41 @@ function getWeekDayArr(monthDistance){
     var firstDay = new Date(y, monthDistance, 1);// first day of the selected month
     var fdDayOfWeek = firstDay.getDay()
     for (const x of Array(31).keys()) {
-        monthArr.push(weekDays[mod((fdDayOfWeek+x),7)]);
+        monthArr.push(days[mod((fdDayOfWeek+x),7)]);
     }
     return monthArr
 }
-// console.log("This month: "+mm)
-
-
-for (const x of Array(31).keys()) {
-    console.log(getWeekDayArr(-x))
+function changeDays(monthDistance){
+    var daysArr = getWeekDayArr(monthDistance);
+    var daysDoc = document.querySelectorAll(".days");
+    for (var i = 0; i < daysDoc.length; i++) {
+        daysDoc[i].innerHTML = daysArr[i];
+    }
 }
+
+// Information about DOM manipulation can be found at:
+// https://stackoverflow.com/questions/14094697/how-to-create-new-div-dynamically-change-it-move-it-modify-it-in-every-way-po
+function renderCalendarHabits(){
+    var habitsContainer = document.getElementById("calendar-habits-container")
+    var habits = getAllHabits();
+
+    for(var i = 0; i<habits.length; i++){
+        const habit = habits[i];
+        console.log(habit)
+
+        var container = document.createElement('div')
+        container.className = "calendar-icon-rows";
+        var icon = document.createElement('div')
+        icon.style.backgroundColor = habit.color;
+        icon.innerHTML = habit.icon;
+        container.appendChild(icon);
+        for(var j = 0; j<31; j++){ // loop through all calendar-days
+            var day = document.createElement('div');
+            day.className = "calendar-day";
+            container.appendChild(day);
+        }
+        habitsContainer.appendChild(container);
+    }
+    
+}
+
