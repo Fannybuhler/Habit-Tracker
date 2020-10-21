@@ -1,24 +1,19 @@
+
 .dropbtn {
-    background-color: transparent;
+    display: block;
+    box-shadow:0px 0px 5px 1px rgba(0,0,0,0.1);
+    background-color: #fff;
     color: rgb(0, 0, 0);
     padding: 10px;
     font-size: 16px;
     border: none;
     cursor: pointer;
-    width: 150px; 
+    width:30vw; 
     height: 70px;
+    
+    
 }
   
-.dropdown {
-    border: 5px solid #28BFCF;
-    box-sizing: border-box;
-    filter: drop-shadow(0px 4px 4px rgb(0, 0, 0.25)); 
-    box-sizing: border-box;
-    position: relative;
-    display: inline-block; 
-    height: 70px;
-}
-
 .dropdownContent {
     position: absolute;
     background: linear-gradient(#e4dfdf, #c1c2c5);
@@ -63,4 +58,22 @@ button:hover {
     margin: 10px;
     border-style: none;
     box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.2);;
+}
+.dropdownText {
+    float: left;
+}
+.dropdownArrow {
+    float: right;
+}
+
+.dropdownArrow {
+    animation: spin 1s;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    } to {
+        tranform: rotate(180deg);
+    }
 }
