@@ -27,7 +27,15 @@ window.onclick = function(event) {
 var addHabitBtn = document.querySelector(".add-habit-btn");
 addHabitBtn.addEventListener("click", addHabit);
 function addHabit(){
-  // WRITE FUNCTION FOR ADDING TO ICONS AND CALENDAR
-  // in the meantime, close modal
+  let createHabitName = document.getElementById("createHabitName").value;
+  let dropIcon = document.getElementById("dropIcon").getElementsByTagName("svg")[0].outerHTML;
+  let dropColor = document.getElementById("dropColor").getAttribute("style");
+  let createHabitDescription = document.getElementById("createHabitDescription").value;
+  //dropColor = dropColor.slice(7, -1);
+  console.log(createHabitName);
+  console.log(dropIcon);
+  console.log(dropColor);
+  console.log(createHabitDescription);
+  daoCreateHabit(createHabitName, dropIcon ,dropColor, createHabitDescription);
   modal.style.display = "none";
 }

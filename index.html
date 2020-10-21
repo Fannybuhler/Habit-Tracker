@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="css/modal.css" type="text/css">
     <link rel="stylesheet" href="css/pop_up_dropdown.css" type="text/css">
     <script rel="script" defer src="js/dao.js"></script>
-    <script rel="script" defer src="js/script.js"></script>
     <script rel="script" defer src="js/modal.js"></script>
     <script rel="script" defer src="js/calendar.js"></script>
     <script rel="script" defer src="js/dropdown.js"></script>
@@ -134,7 +133,7 @@
             
             <div class="input-container">
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name" class="text-input">
+                <input type="text" id="createHabitName" name="name" class="text-input">
             </div>
            
             <div class="dropdown" id="dropdownColor">
@@ -148,7 +147,7 @@
             </div>
 
             <div class="input-container">
-                <textarea type="text" id="description" name="description" 
+                <textarea type="text" id="createHabitDescription" name="description" 
                 ng-model="loremIpsum" ng-keyup="autoExpand($event)" placeholder="Description..."></textarea>
             </div>
             <div class="add-habit-btn-container">
