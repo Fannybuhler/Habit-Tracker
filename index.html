@@ -6,10 +6,12 @@
     <title>Track your daily habits</title>
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/modal.css" type="text/css">
+    <link rel="stylesheet" href="css/pop_up_dropdown.css" type="text/css">
     <script rel="script" defer src="js/script.js"></script>
     <script rel="script" defer src="js/modal.js"></script>
     <script rel="script" defer src="js/calendar.js"></script>
     <script rel="script" defer src="js/dropdown.js"></script>
+    <script rel="script" defer src="js/pop_up_dropdown.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
 </head>
@@ -161,44 +163,17 @@
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" class="text-input">
             </div>
-            <div class="input-container">
-                <div class="custom-select">
-                    <select>
-                      <option value="0">Select icon:</option>
-                      <option value="1">Audi</option>
-                      <option value="2">BMW</option>
-                      <option value="3">Citroen</option>
-                      <option value="4">Ford</option>
-                      <option value="5">Honda</option>
-                      <option value="6">Jaguar</option>
-                      <option value="7">Land Rover</option>
-                      <option value="8">Mercedes</option>
-                      <option value="9">Mini</option>
-                      <option value="10">Nissan</option>
-                      <option value="11">Toyota</option>
-                      <option value="12">Volvo</option>
-                    </select>
-                </div>
+           
+            <div class="dropdown" id="dropdownColor">
+                <button class="dropbtn" id="dropColor" onclick="showDropdown(1)">Pick a color</button>
+                <div class="dropdownContent hidden" id="color"></div>
             </div>
-            <div class="input-container">
-              <div class="custom-select">
-                  <select>
-                    <option value="0">Select color:</option>
-                    <option value="1">Audi</option>
-                    <option value="2">BMW</option>
-                    <option value="3">Citroen</option>
-                    <option value="4">Ford</option>
-                    <option value="5">Honda</option>
-                    <option value="6">Jaguar</option>
-                    <option value="7">Land Rover</option>
-                    <option value="8">Mercedes</option>
-                    <option value="9">Mini</option>
-                    <option value="10">Nissan</option>
-                    <option value="11">Toyota</option>
-                    <option value="12">Volvo</option>
-                  </select>
-              </div>
-          </div>
+        
+            <div class="dropdown icon">
+                <button class="dropbtn" id="dropIcon" onclick="showDropdown(2)">Choose an icon</button>
+                <div class="dropdownContent hidden" id="icon"></div>
+            </div>
+
             <div class="input-container">
                 <textarea type="text" id="description" name="description" 
                 ng-model="loremIpsum" ng-keyup="autoExpand($event)" placeholder="Description..."></textarea>

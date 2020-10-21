@@ -1,20 +1,22 @@
 .dropbtn {
     background-color: transparent;
     color: rgb(0, 0, 0);
-    padding: 16px;
+    padding: 10px;
     font-size: 16px;
     border: none;
     cursor: pointer;
-    width: 150px;  
+    width: 150px; 
+    height: 70px;
 }
   
 .dropdown {
-    
-    background-color: #28BFCF;
+    border: 5px solid #28BFCF;
     box-sizing: border-box;
     filter: drop-shadow(0px 4px 4px rgb(0, 0, 0.25)); 
+    box-sizing: border-box;
     position: relative;
-    display: inline-block;
+    display: inline-block; 
+    height: 70px;
 }
 
 .dropdownContent {
@@ -22,8 +24,8 @@
     background: linear-gradient(#e4dfdf, #c1c2c5);
     justify-items: center;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    
 }
+
 .showing {
     display: grid;
     grid-template-columns: repeat(4, 100px);
@@ -38,22 +40,28 @@
     display: none; 
 }
 
-.dropdownContent a {
+.dropdownContent button {
     justify-content: center;
     display: block;
 }
 
-.dropdownContent a:hover {
+.dropdownContent button:hover {
     background-color: #f1f1f1    
 }
 
 svg {
     height: 30px;
     width: 30px;
-    padding: 10px;
-    border: 1px solid #000;
-    fill: #000;
+
 }
-svg:hover {
+button:hover {
     cursor: pointer;
+}
+.colorBtn {
+    height: 90px;
+    width: 90px;
+    padding: 10px;
+    margin: 10px;
+    border-style: none;
+    box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.2);;
 }
