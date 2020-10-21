@@ -88,9 +88,11 @@ let habitColors = ["#28BFCF", "#E9EBEF", "#4ACDD9", "#5B7EDF", "#4EE961", "#88C7
 function showDropdown(a){
     if(a == 1) {
         let dropBtnColor = document.getElementById("color");
+        let dropArrow = document.getElementById("arrowColor");
         if(dropBtnColor.classList == 'dropdownContent hidden') {
             dropBtnColor.classList.add('showing');
             dropBtnColor.classList.remove('hidden');
+            dropArrow.classList.add('dropdownArrow');
         } else if(dropBtnColor.classList == 'dropdownContent showing') {
             dropBtnColor.classList.remove('showing');
             dropBtnColor.classList.add('hidden');
@@ -98,9 +100,11 @@ function showDropdown(a){
         loopElements(1);
     } else if(a == 2) {
         let dropBtnIcon = document.getElementById("icon");
+        let dropArrow = document.getElementById("arrowIcon");
         if(dropBtnIcon.classList == 'dropdownContent hidden') {
             dropBtnIcon.classList.add('showing');
             dropBtnIcon.classList.remove('hidden');
+            dropArrow.classList.add('dropdownArrow');
         } else if(dropBtnIcon.classList == 'dropdownContent showing') {
             dropBtnIcon.classList.remove('showing');
             dropBtnIcon.classList.add('hidden');
@@ -126,11 +130,9 @@ function loopElements(loop) {
 }
 // Selects and displays the chosen color
 function colorDisplay() {
-    let fillColor = document.getElementById('dropdownColor');
+    let fillColor = document.getElementById('dropColor');
     fillColor.style.backgroundColor = habitColors[this.id];
     fillColor.style.border = "5px solid" + habitColors[this.id];
-    let hideText = document.getElementById('dropColor');
-    hideText.style.color = habitColors[this.id];
     showDropdown(1, 'dropdownContent showing');
 }
 
@@ -138,7 +140,7 @@ function colorDisplay() {
 
 // Selects and displays the chosen icon
 function iconDisplay() {
-    let startText = document.getElementById('dropIcon');
+    let startText = document.getElementById('downTextIcon');
     startText.innerHTML = iconArr[this.id];
     showDropdown(2, 'dropdownContent showing');
 }
