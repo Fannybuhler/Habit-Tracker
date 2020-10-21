@@ -135,16 +135,43 @@
                 <label for="name">Name</label>
                 <input type="text" id="createHabitName" name="name" class="text-input">
             </div>
-           
-            <div class="dropdown" id="dropdownColor">
-                <button class="dropbtn" id="dropColor" onclick="showDropdown(1)">Pick a color</button>
-                <div class="dropdownContent hidden" id="color"></div>
+
+            <div class="input-container">
+                <div class="dropdown" id="dropdownColor">
+                    <button class="dropbtn" id="dropColor" onclick="showDropdown(1)">
+                        <div class="dropdownText">
+                            Pick a color
+                        </div>
+                        <div class="dropdownArrow" id="arrowColor">
+                            <svg width="193" height="172" viewBox="0 0 193 172" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path id="dropdownArrow" d="M83.5097 159.5L7.81387 28.391C0.140625 15.1005 15.0138 0.227341 28.3043 7.90063L84.0001 40.0566C91.7351 44.5224 101.265 44.5224 109 40.0566L164.696 7.90063C177.986 0.227371 192.86 15.1005 185.186 28.391L109.49 159.5C103.717 169.5 89.2832 169.5 83.5097 159.5Z" fill="black" stroke="black" stroke-width="10"/>
+                            </svg>
+                        </div>
+                        
+                    </button>
+                    
+                    <div class="dropdownContent hidden" id="color"></div>
+                </div>
             </div>
-        
+           
+            
+        <div class="input-container">
             <div class="dropdown icon">
-                <button class="dropbtn" id="dropIcon" onclick="showDropdown(2)">Choose an icon</button>
+                <button class="dropbtn" id="dropIcon" onclick="showDropdown(2)">
+                    <div class="dropdownText" id="downTextIcon">
+                        Pick a icon
+                    </div>
+                    <div class="dropdownArrow" id="arrowIcon">
+                        <svg width="193" height="172" viewBox="0 0 193 172" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path id="dropdownArrow" d="M83.5097 159.5L7.81387 28.391C0.140625 15.1005 15.0138 0.227341 28.3043 7.90063L84.0001 40.0566C91.7351 44.5224 101.265 44.5224 109 40.0566L164.696 7.90063C177.986 0.227371 192.86 15.1005 185.186 28.391L109.49 159.5C103.717 169.5 89.2832 169.5 83.5097 159.5Z" fill="black" stroke="black" stroke-width="10"/>
+                        </svg>
+                    </div>
+                </button>
+                
                 <div class="dropdownContent hidden" id="icon"></div>
             </div>
+        </div>
+            
 
             <div class="input-container">
                 <textarea type="text" id="createHabitDescription" name="description" 

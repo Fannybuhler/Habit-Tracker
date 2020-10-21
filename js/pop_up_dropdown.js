@@ -126,19 +126,15 @@ function loopElements(loop) {
 }
 // Selects and displays the chosen color
 function colorDisplay() {
-    let fillColor = document.getElementById('dropdownColor');
+    let fillColor = document.getElementById('dropColor');
     fillColor.style.backgroundColor = habitColors[this.id];
     fillColor.style.border = "5px solid" + habitColors[this.id];
-    let hideText = document.getElementById('dropColor');
-    hideText.style.color = habitColors[this.id];
     showDropdown(1, 'dropdownContent showing');
 }
 
-
-
 // Selects and displays the chosen icon
 function iconDisplay() {
-    let startText = document.getElementById('dropIcon');
+    let startText = document.getElementById('downTextIcon');
     startText.innerHTML = iconArr[this.id];
     showDropdown(2, 'dropdownContent showing');
 }
