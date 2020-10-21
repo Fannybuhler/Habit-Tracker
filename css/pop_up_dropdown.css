@@ -49,10 +49,9 @@
     background-color: #f1f1f1    
 }
 
-svg {
+.dropbtn svg {
+    display: inline-block;
     height: 30px;
-    width: 30px;
-
 }
 button:hover {
     cursor: pointer;
