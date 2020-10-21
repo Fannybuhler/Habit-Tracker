@@ -88,11 +88,9 @@ let habitColors = ["#28BFCF", "#E9EBEF", "#4ACDD9", "#5B7EDF", "#4EE961", "#88C7
 function showDropdown(a){
     if(a == 1) {
         let dropBtnColor = document.getElementById("color");
-        let dropArrow = document.getElementById("arrowColor");
         if(dropBtnColor.classList == 'dropdownContent hidden') {
             dropBtnColor.classList.add('showing');
             dropBtnColor.classList.remove('hidden');
-            dropArrow.classList.add('dropdownArrow');
         } else if(dropBtnColor.classList == 'dropdownContent showing') {
             dropBtnColor.classList.remove('showing');
             dropBtnColor.classList.add('hidden');
@@ -100,11 +98,9 @@ function showDropdown(a){
         loopElements(1);
     } else if(a == 2) {
         let dropBtnIcon = document.getElementById("icon");
-        let dropArrow = document.getElementById("arrowIcon");
         if(dropBtnIcon.classList == 'dropdownContent hidden') {
             dropBtnIcon.classList.add('showing');
             dropBtnIcon.classList.remove('hidden');
-            dropArrow.classList.add('dropdownArrow');
         } else if(dropBtnIcon.classList == 'dropdownContent showing') {
             dropBtnIcon.classList.remove('showing');
             dropBtnIcon.classList.add('hidden');
@@ -135,8 +131,6 @@ function colorDisplay() {
     fillColor.style.border = "5px solid" + habitColors[this.id];
     showDropdown(1, 'dropdownContent showing');
 }
-
-
 
 // Selects and displays the chosen icon
 function iconDisplay() {
