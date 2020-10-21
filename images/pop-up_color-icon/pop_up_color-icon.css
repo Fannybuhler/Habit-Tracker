@@ -10,7 +10,9 @@
 }
   
 .dropdown {
-    background-color: #28BFCF;
+    border: 5px solid #28BFCF;
+    box-sizing: border-box;
+    filter: drop-shadow(0px 4px 4px rgb(0, 0, 0.25)); 
     box-sizing: border-box;
     position: relative;
     display: inline-block; 
