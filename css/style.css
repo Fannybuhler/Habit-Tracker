@@ -8,7 +8,24 @@ body {
     min-height: 100vh;
     background: linear-gradient(#ffffff, #E9EBEF);
 }
+.dates{
+    font-size:30px;
+    height:50%;
 
+}
+.days {
+    font-size: 16px;
+    height:50%;
+}
+ /*CALENDAR DAYS AND DATES*/
+ .habit-calendar-container {
+    display: grid;
+    margin: 5% 5% 0 5%;
+    grid-template-columns: 200px repeat(31, 1fr);
+    grid-template-rows: 10px 10px;
+    height:82px;
+    text-align: center;
+}
 .logo {
     width: 30vw;
     margin: 10px 0 0 10px;
@@ -36,6 +53,7 @@ body {
 
 .habit-btn.calendar {
     border-radius: 0%;
+    margin: 0 5% 0 5%;
 }
 
 .habit-btn:hover {
@@ -56,29 +74,16 @@ body {
 .calendar-arrow:hover {
     filter: drop-shadow(0px 10px 15px rgba(37, 37, 37, 0.8));
 }
- /*CALENDAR DAYS AND DATES*/
-.habit-calendar-container {
-    display: grid;
-    margin: 5% 5% 0 5%;
-    grid-template-columns: 200px repeat(31, 1fr);
-    grid-template-rows: 40px 40px;
-    text-align: center;
-}
 
-.days {
-    font-size: 0.5rem;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-}
+
+
 
 /*CALENDAR ICON ROWS*/
 .calendar-icon-rows {
     display: grid;
     margin: 0 5% 0 5%;
     grid-template-columns: 200px repeat(31, 1fr);
-    grid-template-rows: 200px 200px;
-    row-gap: 5%;
+    grid-template-rows: 200px 20px;
 }
 
 .calendar-icon {

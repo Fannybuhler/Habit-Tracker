@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/modal.css" type="text/css">
     <link rel="stylesheet" href="css/pop_up_dropdown.css" type="text/css">
+    <script rel="script" defer src="js/dao.js"></script>
     <script rel="script" defer src="js/script.js"></script>
     <script rel="script" defer src="js/modal.js"></script>
     <script rel="script" defer src="js/calendar.js"></script>
@@ -16,7 +17,6 @@
 
 </head>
 <body>
-
     <header class="home">
         <img src="images/Logo.png" alt="Logotype that reads 'Track your daily habits'" class="logo">
     </header>
@@ -37,6 +37,7 @@
         </button>
 
         <div class="current-month"></div>
+
         <button class="calendar-arrow" id="arrow-right">
             <svg width="163" height="47" viewBox="0 0 163 47" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <mask id="path-1-inside-1" fill="white">
@@ -46,40 +47,40 @@
                 </svg>
         </button>
     </div>
-
+    
     <div class="habit-calendar-container">
         <p></p>
-        <p class="days">Thu</p>
-        <p class="days">Fri</p>
-        <p class="days">Sat</p>
-        <p class="days">Sun</p>
-        <p class="days">Mon</p>
-        <p class="days">Tue</p>
-        <p class="days">Wed</p>
-        <p class="days">Thu</p>
-        <p class="days">Fri</p>
-        <p class="days">Sat</p>
-        <p class="days">Sun</p>
-        <p class="days">Mon</p>
-        <p class="days">Tue</p>
-        <p class="days">Wed</p>
-        <p class="days">Thu</p>
-        <p class="days">Fri</p>
-        <p class="days">Sat</p>
-        <p class="days">Sun</p>
-        <p class="days">Mon</p>
-        <p class="days">Tue</p>
-        <p class="days">Wed</p>
-        <p class="days">Thu</p>
-        <p class="days">Fri</p>
-        <p class="days">Sat</p>
-        <p class="days">Sun</p>
-        <p class="days">Mon</p>
-        <p class="days">Tue</p>
-        <p class="days">Wed</p>
-        <p class="days">Thu</p>
-        <p class="days">Fri</p>
-        <p class="days">Sat</p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
+        <p class="days"></p>
 
         <p></p>
         <p class="dates">01</p>
@@ -115,41 +116,13 @@
         <p class="dates">31</p>
     </div>
 
-    <div class="calendar-icon-rows ">
-        <div class="calendar-icon"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <div class="calendar-day"></div>
-        <button class="habit-btn calendar">+</button>
+    <!-- Will be filled dynamicly with JS -->
+    <div id="calendar-habits-container">
     </div>
+  
+  <button class="habit-btn calendar">+</button>
+  
+
 
 
     <!-- The Modal -->
