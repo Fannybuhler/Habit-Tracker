@@ -91,9 +91,11 @@ function showDropdown(a){
         if(dropBtnColor.classList == 'dropdownContent hidden') {
             dropBtnColor.classList.add('showing');
             dropBtnColor.classList.remove('hidden');
+            arrow(1);
         } else if(dropBtnColor.classList == 'dropdownContent showing') {
             dropBtnColor.classList.remove('showing');
             dropBtnColor.classList.add('hidden');
+            arrow(1);
         }
         loopElements(1);
     } else if(a == 2) {
@@ -101,9 +103,11 @@ function showDropdown(a){
         if(dropBtnIcon.classList == 'dropdownContent hidden') {
             dropBtnIcon.classList.add('showing');
             dropBtnIcon.classList.remove('hidden');
+            arrow(2);
         } else if(dropBtnIcon.classList == 'dropdownContent showing') {
             dropBtnIcon.classList.remove('showing');
             dropBtnIcon.classList.add('hidden');
+            arrow(2);
         } 
         loopElements(2);
     }
@@ -128,7 +132,7 @@ function loopElements(loop) {
 function colorDisplay() {
     let fillColor = document.getElementById('dropColor');
     fillColor.style.backgroundColor = habitColors[this.id];
-    fillColor.style.border = "5px solid" + habitColors[this.id];
+    //fillColor.style.border = "5px solid" + habitColors[this.id];
     showDropdown(1, 'dropdownContent showing');
 }
 
@@ -137,4 +141,34 @@ function iconDisplay() {
     let startText = document.getElementById('downTextIcon');
     startText.innerHTML = iconArr[this.id];
     showDropdown(2, 'dropdownContent showing');
+}
+
+function arrow(arrow) {
+    let dropArrowColor = document.getElementById("arrowColor");
+    let dropArrowIcon = document.getElementById("arrowIcon");
+    if(arrow == 1) {
+        if(dropArrowColor.classList == 'arrowDrop') {
+            dropArrowColor.classList.add('spinDown');
+            dropArrowColor.classList.remove('spinUp');
+        }
+        else if(dropArrowColor.classList == 'arrowDrop spinDown') {
+            dropArrowColor.classList.add('spinUp');
+            dropArrowColor.classList.remove('spinDown');
+        } else if(dropArrowColor.classList == 'arrowDrop spinUp') {
+            dropArrowColor.classList.remove('spinUp');
+            dropArrowColor.classList.add('spinDown');
+        }    
+    } else if(arrow == 2) {
+        if(dropArrowIcon.classList == 'arrowDrop') {
+            dropArrowIcon.classList.add('spinDown');
+            dropArrowIcon.classList.remove('spinUp');
+        } else if(dropArrowIcon.classList == 'arrowDrop spinDown') {
+            dropArrowIcon.classList.add('spinUp');
+            dropArrowIcon.classList.remove('spinDown');
+        } else if(dropArrowIcon.classList == 'arrowDrop spinUp') {
+            dropArrowIcon.classList.remove('spinUp');
+            dropArrowIcon.classList.add('spinDown');
+        }    
+    }
+     
 }
