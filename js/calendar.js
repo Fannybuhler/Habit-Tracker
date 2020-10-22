@@ -7,9 +7,6 @@ const todayDate = new Date();
 var mm = String(todayDate.getMonth() + 1).padStart(2, '0'); //January is 0!
 var monthCounter = 0; // Used to call getWeekDayArr()
 
-var currentDate = "";
-
-renderCalendarHabits()// Render all the habits that are in the localStorage to the calendar
 
 mm -= 1;// adjusts index-position from array
 
@@ -44,17 +41,21 @@ function mod(n, m) {
     return ((n % m) + m) % m;
   }
 
-const todayMonth = todayDate.getMonth(); // January = 0, December = 11
-const todayYear = todayDate.getFullYear();
-currentDate = todayYear+"-"+todayMonth;
+let currentMonth = todayDate.getMonth(); // January = 0, December = 11
+let currentYear = todayDate.getFullYear();
+let currentDate = currentYear+"-"+currentMonth;
+
+const constDateToday = currentDate; // 'constDateToday' is the date today. It does not change with the calendar, like 'currentDate' does 
+const constMonthToday = currentMonth;
+const constYearToday = currentYear;
 
 changeDays(monthCounter) // update the dayOfWeek element in HTML initialy
 // PARAM month: the 'month-distance' from todays month.
 // RETURN monthArr: a array with all the days in the month
 function getWeekDayArr(monthDistance){
     var monthArr = []
-    var y = todayYear;
-    monthDistance +=todayMonth;
+    var y = constYearToday;
+    monthDistance +=constMonthToday;
     if(monthDistance>11){
         // 
         y += Math.floor(monthDistance/12)
@@ -70,20 +71,31 @@ function getWeekDayArr(monthDistance){
         monthArr.push(days[mod((fdDayOfWeek+x),7)]);
     }
     currentDate = y+"-"+monthDistance; // Update the currentDate to represent the date that the callendar is on
+    currentYear = y;
+    currentMonth = monthDistance;
     return monthArr
 }
-function changeDays(monthDistance){
+function changeDays(monthDistance){ // Changes the day-of-week display in the calendar
     var daysArr = getWeekDayArr(monthDistance);
     var daysDoc = document.querySelectorAll(".days");
     for (var i = 0; i < daysDoc.length; i++) {
         daysDoc[i].innerHTML = daysArr[i];
     }
+    if(currentDate === constDateToday){
+        document.querySelectorAll(".dates")[todayDate.getDate()-1].classList.add("today-day")
+        daysDoc[todayDate.getDate()-1].classList.add("today-day");
+    }else{
+        document.querySelectorAll(".dates")[todayDate.getDate()-1].classList.remove("today-day")
+        daysDoc[todayDate.getDate()-1].classList.remove("today-day");
+    }
+    renderCalendarHabits()// Render all the habits that are in the localStorage to the calendar
 }
 
 // Information about DOM manipulation can be found at:
 // https://stackoverflow.com/questions/14094697/how-to-create-new-div-dynamically-change-it-move-it-modify-it-in-every-way-po
 function renderCalendarHabits(){
     var habitsContainer = document.getElementById("calendar-habits-container") // The main container that has all the calendar-icon-rows in it
+    habitsContainer.innerHTML = ""; // Empty the innerHTML of container
     var habits = getAllHabits();
     for(var i = 0; i<habits.length; i++){ // Loop through all habits in localStorage
         const habit = habits[i];
@@ -93,15 +105,34 @@ function renderCalendarHabits(){
         icon.style.backgroundColor = habit.color;
         icon.innerHTML = habit.icon;
         container.appendChild(icon);
+        const doneDays = habit.dates[currentDate];
+        let isActiveMonth = doneDays==undefined ? false : true; // If the month exists in the 'dates' array in local storage 
+        const numOfDays = daysInMonth(currentDate);
+        console.log(constYearToday+"-"+addZero(""+constMonthToday)+"-"+addZero(""+todayDate.getDate())+" vs "+currentYear+"-"+addZero(""+currentMonth))
         for(var j = 0; j<31; j++){ // loop through all calendar-days
             var day = document.createElement('div');
             day.className = "calendar-day";
             day.id = habit.name+"-"+j;
-            day.addEventListener("click", dayClick)
+            if(j+1>numOfDays){ // If the day does not exist in the calendar(ex: 29th Feb)
+                day.classList.add("unavilable-day");
+            }else if(constYearToday+"-"+addZero(""+constMonthToday)+"-"+addZero(""+todayDate.getDate())<
+                    currentYear+"-"+addZero(""+currentMonth)+"-"+addZero(""+(j+1))){ // Checks if the day is in the future
+                day.classList.add("future-day");
+            }
+            else{
+                day.addEventListener("click", dayClick)
+                if(isActiveMonth && doneDays.includes(""+j)){
+                    day.style.backgroundColor = habit.color; // Style the days that are selected
+                }
+                // if(currentDate === constDateToday && todayDate.getDate() == j-1){
+                //     day.classList.add("today-day");
+                // }
+
+            }
             container.appendChild(day);
         }
         habitsContainer.appendChild(container);
-    } 
+    }
 }
 function dayClick(){ // Handles the calendar-day clicks.
     // Use split to the the habitName and dayID from the ID of the calendar-day element
@@ -122,5 +153,17 @@ function dayClick(){ // Handles the calendar-day clicks.
         dates[currentDate].push(id); // Set the day as 'selected' by adding it the the array for the date
     }
     updateHabit(habitName, dates) // Updates tha dates array in the habits localStorage
+    renderCalendarHabits()
 }
+function daysInMonth (date) {
+    const year = (date.split("-")[0]) 
+    const month = parseInt(date.split("-")[1])+1
+    return new Date(year, month, 0).getDate(); 
+}
+function addZero(num){ // Add zero to a number with a single digit (ex: addZero(9) -> 09)
+    if(num.length == 1){
+        return "0"+num;
+    }
+    return num;
+} 
 
