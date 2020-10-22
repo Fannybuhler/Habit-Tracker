@@ -85,9 +85,12 @@ let habitColors = ["#28BFCF", "#E9EBEF", "#4ACDD9", "#5B7EDF", "#4EE961", "#88C7
 })();
 
 // Changes the style and displays the dropdown
+let dropBtnColor = document.getElementById("color");
+let dropBtnIcon = document.getElementById("icon");
+
 function showDropdown(a){
+    
     if(a == 1) {
-        let dropBtnColor = document.getElementById("color");
         if(dropBtnColor.classList == 'dropdownContent hidden') {
             dropBtnColor.classList.add('showing');
             dropBtnColor.classList.remove('hidden');
@@ -97,9 +100,10 @@ function showDropdown(a){
             dropBtnColor.classList.add('hidden');
             arrow(1);
         }
+        dropBtnIcon.classList.remove('showing');
+        dropBtnIcon.classList.add('hidden');
         loopElements(1);
     } else if(a == 2) {
-        let dropBtnIcon = document.getElementById("icon");
         if(dropBtnIcon.classList == 'dropdownContent hidden') {
             dropBtnIcon.classList.add('showing');
             dropBtnIcon.classList.remove('hidden');
@@ -109,6 +113,8 @@ function showDropdown(a){
             dropBtnIcon.classList.add('hidden');
             arrow(2);
         } 
+        
+
         loopElements(2);
     }
 };
@@ -147,25 +153,18 @@ function arrow(arrow) {
     let dropArrowColor = document.getElementById("arrowColor");
     let dropArrowIcon = document.getElementById("arrowIcon");
     if(arrow == 1) {
-        if(dropArrowColor.classList == 'arrowDrop') {
-            dropArrowColor.classList.add('spinDown');
-            dropArrowColor.classList.remove('spinUp');
-        }
-        else if(dropArrowColor.classList == 'arrowDrop spinDown') {
+        if(dropBtnColor.classList == 'dropdownContent hidden') {
             dropArrowColor.classList.add('spinUp');
             dropArrowColor.classList.remove('spinDown');
-        } else if(dropArrowColor.classList == 'arrowDrop spinUp') {
+        } else if(dropBtnColor.classList == 'dropdownContent showing') {
             dropArrowColor.classList.remove('spinUp');
             dropArrowColor.classList.add('spinDown');
         }    
     } else if(arrow == 2) {
-        if(dropArrowIcon.classList == 'arrowDrop') {
-            dropArrowIcon.classList.add('spinDown');
-            dropArrowIcon.classList.remove('spinUp');
-        } else if(dropArrowIcon.classList == 'arrowDrop spinDown') {
+        if(dropBtnIcon.classList == 'dropdownContent hidden') {
             dropArrowIcon.classList.add('spinUp');
             dropArrowIcon.classList.remove('spinDown');
-        } else if(dropArrowIcon.classList == 'arrowDrop spinUp') {
+        } else if(dropBtnIcon.classList == 'dropdownContent showing') {
             dropArrowIcon.classList.remove('spinUp');
             dropArrowIcon.classList.add('spinDown');
         }    
