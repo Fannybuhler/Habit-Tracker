@@ -29,13 +29,14 @@ addHabitBtn.addEventListener("click", addHabit);
 function addHabit(){
   let createHabitName = document.getElementById("createHabitName").value;
   let dropIcon = document.getElementById("dropIcon").getElementsByTagName("svg")[0].outerHTML;
-  let dropColor = document.getElementById("dropColor").getAttribute("style");
+  let dropColor = document.getElementById("dropColor")
+  let rbgDropColor = dropColor.style.backgroundColor;
   let createHabitDescription = document.getElementById("createHabitDescription").value;
-  //dropColor = dropColor.slice(7, -1);
   console.log(createHabitName);
   console.log(dropIcon);
-  console.log(dropColor);
+  console.log(rbgDropColor);
   console.log(createHabitDescription);
-  daoCreateHabit(createHabitName, dropIcon ,dropColor, createHabitDescription);
+  daoCreateHabit(createHabitName, dropIcon , rbgDropColor, createHabitDescription);
   modal.style.display = "none";
+  location.reload();
 }
