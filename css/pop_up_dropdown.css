@@ -16,7 +16,7 @@
   
 .dropdownContent {
     position: absolute;
-    background: linear-gradient(#e4dfdf, #c1c2c5);
+    background: linear-gradient(#fff, #e1e1e1);
     justify-items: center;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 5;
@@ -56,7 +56,11 @@
 }
 
 
-
+.calendar-icon-rows svg {
+    width: 150px;
+    height: 150px;
+    
+}
 .arrowDrop {
     width: 20px;
     float: right;
@@ -80,6 +84,10 @@ button:hover {
 }
 .dropdownText {
     text-align: left;
+}
+.icons {
+    height: 100px;
+    width: 100px
 }
 
 
