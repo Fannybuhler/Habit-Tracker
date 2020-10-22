@@ -108,7 +108,6 @@ function renderCalendarHabits(){
         const doneDays = habit.dates[currentDate];
         let isActiveMonth = doneDays==undefined ? false : true; // If the month exists in the 'dates' array in local storage 
         const numOfDays = daysInMonth(currentDate);
-        console.log(constYearToday+"-"+addZero(""+constMonthToday)+"-"+addZero(""+todayDate.getDate())+" vs "+currentYear+"-"+addZero(""+currentMonth))
         for(var j = 0; j<31; j++){ // loop through all calendar-days
             var day = document.createElement('div');
             day.className = "calendar-day";
