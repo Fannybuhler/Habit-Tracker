@@ -8,10 +8,10 @@
     font-size: 16px;
     border: none;
     cursor: pointer;
-    width:30vw; 
+    width: 15vw; 
     height: 70px;
-    
-    
+    position: relative;  
+     
 }
   
 .dropdownContent {
@@ -19,6 +19,7 @@
     background: linear-gradient(#e4dfdf, #c1c2c5);
     justify-items: center;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 5;
 }
 
 .showing {
@@ -40,43 +41,69 @@
     display: block;
 }
 
-.dropdownContent button:hover {
-    background-color: #f1f1f1    
-}
+
 
 .dropdownText svg {
     display: inline-block;
     height: 50px;
+    
 }
-.dropdownArrow svg {
-    height: 10px;
+
+.arrowDrop svg {
+    height: 15px; 
+    width: 15px;
+    
+}
+
+
+
+.arrowDrop {
+    width: 20px;
+    float: right;
+}
+
+.arrow-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 button:hover {
     cursor: pointer;
 }
 .colorBtn {
-    height: 90px;
-    width: 90px;
+    height: 100px;
+    width: 100px;
     padding: 10px;
     margin: 10px;
     border-style: none;
     box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.2);;
 }
 .dropdownText {
-    float: left;
-}
-.dropdownArrow {
-    float: right;
+    text-align: left;
 }
 
-.dropdownArrow {
-    animation: spin 1s;
+
+.spinUp {
+    animation: spinup .5s forwards;
+    transform-origin: center;
 }
 
-@keyframes spin {
+.spinDown {
+    animation: spindown .5s forwards;
+    transform-origin: center;
+}
+
+@keyframes spindown {
     from {
-        transform: rotate(0deg);
+        transform: rotateX(0deg);
     } to {
-        tranform: rotate(180deg);
+        transform: rotateX(180deg);
+    }
+}
+@keyframes spinup {
+    from {
+        transform: rotateX(180deg);
+    } to {
+        transform: rotateX(0deg);
     }
 }

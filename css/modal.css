@@ -86,6 +86,10 @@
     border-radius: 10px;
     font-size: 1rem
 }
+.dropOption {
+  display: flex;
+  justify-content: center;
+}
 
 
 /* Textarea design from https://codepen.io/kpourdeilami/pen/KDepk */
