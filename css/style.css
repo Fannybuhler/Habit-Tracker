@@ -44,8 +44,8 @@ header {
     margin: auto auto;
     align-items: center;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-auto-rows: min(250px);
-    margin: 7% 7% 0 7%;
+    grid-auto-rows: min(300px);
+    margin: 7% 15% 0 15%;
 }
 .habit-btn{
     height: 200px;
