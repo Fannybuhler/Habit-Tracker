@@ -1,11 +1,17 @@
 // Get the modal
 var modal = document.getElementById("myModal");
+//let modalTitle = document.getElementById("modal-title")
 
 // Get the button that opens the modal
 var btns = document.querySelectorAll(".plus-btn"); // Get a array of two plus-btn elements
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
+
+// Get the calendar icon to open modal
+let calendarIconBtn = document.querySelector(".calendar-icon-container")
+console.log(calendarIconBtn);
+
 
 // When the user clicks on the button, open the modal
 btns[0].onclick = function() {
@@ -14,6 +20,16 @@ btns[0].onclick = function() {
 btns[1].onclick = function() {
   modal.style.display = "block";
 }
+
+calendarIconBtn.onclick = function(){
+  modal.style.display = "block"; 
+  let habitData = getHabit(this.id); //send calendarIconBtn's ID the the function in dao to retrieve data
+  document.getElementById("createHabitName").value = habitData.name;
+  document.getElementById("createHabitDescription").value = habitData.description;
+  document.getElementById("downTextIcon").innerHTML = habitData.icon;
+  document.getElementById("dropColor").style.backgroundColor = habitData.color;
+}
+
 
 
 // When the user clicks on <span> (x), close the modal

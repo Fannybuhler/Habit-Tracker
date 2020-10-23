@@ -27,7 +27,7 @@ function getAllHabits(){
     while ( i-- ) {
         values.push( JSON.parse(localStorage.getItem(keys[i])) );
     }
-
+    
     return values;
 }
 function removeHabit(name){

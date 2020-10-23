@@ -103,6 +103,7 @@ function renderCalendarHabits(){
         container.className = "calendar-icon-rows";
         var icon = document.createElement('div')
         icon.className ="calendar-icon-container"
+        icon.id = habit.name;
         icon.style.backgroundColor = habit.color;
         icon.innerHTML = habit.icon;
         container.appendChild(icon);

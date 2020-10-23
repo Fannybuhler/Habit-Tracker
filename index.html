@@ -11,7 +11,6 @@
     <script rel="script" defer src="js/home.js"></script>
     <script rel="script" defer src="js/calendar.js"></script>
     <script rel="script" defer src="js/modal.js"></script>
-    <script rel="script" defer src="js/dropdown.js"></script>
     <script rel="script" defer src="js/pop_up_dropdown.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
@@ -129,7 +128,7 @@
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h1>Add habit</h1>
+            <h1 id="modal-title">Add habit</h1>
             
             <div class="input-container">
                 <label for="name">Name</label>
@@ -140,7 +139,7 @@
                 <div class="dropdown" id="dropdownColor">
                     <button class="dropbtn" id="dropColor" onclick="showDropdown(1)">
                         <div class="arrow-container">
-                            <div class="dropdownText">
+                            <div class="dropdownText" id="downTestColor">
                                 Pick a color
                             </div>
                             <div class="arrowDrop" id="arrowColor">
