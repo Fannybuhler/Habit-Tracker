@@ -4,7 +4,7 @@ function renderHomeButtons(){
     var habits = getAllHabits();
     let width = (habits.length*15+15);
     if(width>80) width = 80; 
-    habitBtnContainer.style.width = ""+width+"%"
+    //habitBtnContainer.style.width = ""+width+"%"
     for(var i = 0; i<habits.length; i++){ // Loop through all habits in localStorage
         const habit = habits[i];
         var habitBtn = document.createElement('button')
