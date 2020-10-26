@@ -1,0 +1,156 @@
+.logo {
+    width: 30vw;
+    margin: 10px 0 0 10px;
+}
+
+#habit-btn-container {
+    display: grid;
+    margin: auto auto;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: min(300px);
+    margin: 7% 15% 0 15%;
+}
+.habit-btn{
+    height: 200px;
+    width: 200px;
+    background: transparent;
+    border: 15px solid #28BFCF;
+    box-sizing: border-box;
+    border-radius: 50%;
+    font-size: 9em;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    margin: auto;
+    filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.25));
+}
+/* <Habit btn Flip Animation> */
+
+/* The container for the flip object */
+.card {
+    width: 200px;
+    height: 200px;
+    margin: 40px 0;
+    perspective: 600px;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+    transform:rotateX(0deg);
+    margin: auto;
+}
+  
+.card.is-flipped {
+    transform: rotateX(180deg);
+}
+
+.card.flip-animation {
+	-webkit-animation: flip-scale-2-hor-top 0.5s ease-out alternate both;
+	        animation: flip-scale-2-hor-top 0.5s ease-out alternate both;
+}
+/* Adds the attributes of flipp animation to habit-btn */
+.habit-btn__face {
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+}
+
+.habit-btn__face--front {
+    z-index: 1;
+    position: absolute;
+}
+
+.habit-btn__face--back {
+    color:green;
+    background-color:rgba(0, 128, 0, 0.205);
+
+    -webkit-transform: rotatex(180deg);
+    
+}
+.habit-btn__face--back:hover {
+    cursor: default;
+    
+}
+/* Flip Animation was extracted from:
+    https://animista.net/
+*/
+@-webkit-keyframes flip-scale-2-hor-top {
+    0% {
+      -webkit-transform: translateY(0) rotateX(0) scale(1);
+              transform: translateY(0) rotateX(0) scale(1);
+      -webkit-transform-origin: 50% 0%;
+              transform-origin: 50% 0%;
+    }
+    50% {
+      -webkit-transform: translateY(-50%) rotateX(-90deg) scale(2);
+              transform: translateY(-50%) rotateX(-90deg) scale(2);
+      -webkit-transform-origin: 50% 50%;
+              transform-origin: 50% 50%;
+    }
+    100% {
+      -webkit-transform: translateY(-100%) rotateX(-180deg) scale(1);
+              transform: translateY(-100%) rotateX(-180deg) scale(1);
+      -webkit-transform-origin: 50% 100%;
+              transform-origin: 50% 100%;
+    }
+  }
+  @keyframes flip-scale-2-hor-top {
+    0% {
+      -webkit-transform: translateY(0) rotateX(0) scale(1);
+              transform: translateY(0) rotateX(0) scale(1);
+      -webkit-transform-origin: 50% 0%;
+              transform-origin: 50% 0%;
+    }
+    50% {
+      -webkit-transform: translateY(-50%) rotateX(-90deg) scale(2);
+              transform: translateY(-50%) rotateX(-90deg) scale(2);
+      -webkit-transform-origin: 50% 50%;
+              transform-origin: 50% 50%;
+    }
+    100% {
+      -webkit-transform: translateY(-100%) rotateX(-180deg) scale(1);
+              transform: translateY(-100%) rotateX(-180deg) scale(1);
+      -webkit-transform-origin: 50% 100%;
+              transform-origin: 50% 100%;
+    }
+}
+  
+/* </> */
+.habit-btn svg {
+    height: 100px;
+    width: 100px;
+}
+.habit-btn__face--back button{
+    position: absolute;
+    top:-20px;
+    left:150px;
+    border:none;
+    background-color:transparent;
+}
+.habit-btn__face--back svg{
+    height: 30px;
+    width: 30px;
+    
+}
+.habit-btn__face--back svg:hover{
+    filter: drop-shadow(0px 10px 15px rgba(37, 37, 37, 0.8));
+    cursor: pointer;
+}
+.habit-btn.calendar {
+    border-radius: 0%;
+    margin: 0 5% 0 5%;
+}
+.card:hover{
+    cursor: default;
+}
+.habit-btn:hover {
+    filter: drop-shadow(0px 10px 15px rgba(37, 37, 37, 0.8));
+    cursor: pointer;
+}
+.habit-btn__face--back:hover {
+    filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.25));
+    cursor: default;
+}
