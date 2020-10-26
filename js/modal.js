@@ -16,7 +16,9 @@ btns[1].onclick = function() {
   modal.style.display = "block";
 }
 
-// This aint pretty but it resets the modal "manually"
+calendarIconButtons();
+
+//This aint pretty but it resets the modal "manually"
 function clearInputFields() {
   document.getElementById("createHabitName").value = "";
   document.getElementById("createHabitDescription").value = "Description..."
@@ -27,25 +29,6 @@ function clearInputFields() {
   removeBtn.classList.add("hideBtn");
   updateBtn.classList.add("hideBtn")
   addHabitBtn.classList.remove("hideBtn")
-}
-
-// Get every calendar icon to open modal
-let calendarIconBtn = document.querySelectorAll(".calendar-icon-container")
-
-for (let i = 0; i < calendarIconBtn.length; i++){
-calendarIconBtn[i].addEventListener ("click", function(event){
-    modal.style.display = "block"; 
-    let modalTitle = document.getElementById("modal-title");
-    modalTitle.innerHTML = "Change habit"
-    removeBtn.classList.remove("hideBtn")
-    updateBtn.classList.remove("hideBtn")
-    addHabitBtn.classList.add("hideBtn")
-    let habitData = getHabit(this.id); //send calendarIconBtn's ID the the function in dao to retrieve data
-    document.getElementById("createHabitName").value = habitData.name;
-    document.getElementById("createHabitDescription").value = habitData.description;
-    document.getElementById("downTextIcon").innerHTML = habitData.icon;
-    document.getElementById("dropColor").style.backgroundColor = habitData.color;
-  }, false);
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -78,7 +61,7 @@ function addHabit(){
 
 // Remove-button
 let removeBtn = document.getElementById("removeButton");
-removeBtn.addEventListener("click", function(){
+removeBtn.addEventListener("click", () => {
   let habitName = document.getElementById("createHabitName").value;
   removeHabit(habitName);
   modal.style.display = "none";

@@ -134,6 +134,7 @@ function renderCalendarHabits(){
         }
         habitsContainer.appendChild(container);
     }
+    calendarIconButtons();
 }
 function dayClick(){ // Handles the calendar-day clicks.
     // Use split to the the habitName and dayID from the ID of the calendar-day element
@@ -168,3 +169,22 @@ function addZero(num){ // Add zero to a number with a single digit (ex: addZero(
     return num;
 } 
 
+// Get every calendar icon to open modal
+function calendarIconButtons() {
+    let calendarIconBtn = document.querySelectorAll(".calendar-icon-container")
+    for (let i = 0; i < calendarIconBtn.length; i++){
+    calendarIconBtn[i].addEventListener ("click", function(event){
+        modal.style.display = "block"; 
+        let modalTitle = document.getElementById("modal-title");
+        modalTitle.innerHTML = "Change habit"
+        removeBtn.classList.remove("hideBtn")
+        updateBtn.classList.remove("hideBtn")
+        addHabitBtn.classList.add("hideBtn")
+        let habitData = getHabit(this.id); //send calendarIconBtn's ID the the function in dao to retrieve data
+        document.getElementById("createHabitName").value = habitData.name;
+        document.getElementById("createHabitDescription").value = habitData.description;
+        document.getElementById("downTextIcon").innerHTML = habitData.icon;
+        document.getElementById("dropColor").style.backgroundColor = habitData.color;
+      }, false);
+    }
+  }
