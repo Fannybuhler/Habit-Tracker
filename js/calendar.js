@@ -103,6 +103,7 @@ function renderCalendarHabits(){
         container.className = "calendar-icon-rows";
         var icon = document.createElement('div')
         icon.className ="calendar-icon-container"
+        icon.id = habit.name;
         icon.style.backgroundColor = habit.color;
         icon.innerHTML = habit.icon;
         container.appendChild(icon);
@@ -133,6 +134,7 @@ function renderCalendarHabits(){
         }
         habitsContainer.appendChild(container);
     }
+    calendarIconButtons();
 }
 function dayClick(){ // Handles the calendar-day clicks.
     // Use split to the the habitName and dayID from the ID of the calendar-day element
@@ -155,7 +157,7 @@ function dayClick(){ // Handles the calendar-day clicks.
     if(id==(todayDate.getDate()-1)){ // If user clicked on todays date in the calendar
         toggleHomeBtn(habitName); // Toggle the home-btn for that habit
     }
-    updateHabit(habitName, dates) // Updates tha dates array in the habits localStorage
+    updateHabitDates(habitName, dates) // Updates tha dates array in the habits localStorage
     renderCalendarHabits()
 }
 function daysInMonth (date) {
@@ -185,3 +187,22 @@ function toggleHomeBtn(habitName){
     })
 }
 
+// Get every calendar icon to open modal
+function calendarIconButtons() {
+    let calendarIconBtn = document.querySelectorAll(".calendar-icon-container")
+    for (let i = 0; i < calendarIconBtn.length; i++){
+    calendarIconBtn[i].addEventListener ("click", function(event){
+        modal.style.display = "block"; 
+        let modalTitle = document.getElementById("modal-title");
+        modalTitle.innerHTML = "Change habit"
+        removeBtn.classList.remove("hideBtn")
+        updateBtn.classList.remove("hideBtn")
+        addHabitBtn.classList.add("hideBtn")
+        let habitData = getHabit(this.id); //send calendarIconBtn's ID the the function in dao to retrieve data
+        document.getElementById("createHabitName").value = habitData.name;
+        document.getElementById("createHabitDescription").value = habitData.description;
+        document.getElementById("downTextIcon").innerHTML = habitData.icon;
+        document.getElementById("dropColor").style.backgroundColor = habitData.color;
+      }, false);
+    }
+  }

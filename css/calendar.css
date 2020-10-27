@@ -10,7 +10,7 @@ body {
 }
 
 header {
-    height: 40vh;
+    height: 20vh;
 }
 .dates{
     font-size: 23px;
@@ -76,6 +76,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-right: 0.5px solid black;
 }
 
 .calendar-icon {
