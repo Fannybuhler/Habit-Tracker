@@ -4,6 +4,7 @@ const days = ["Sun","Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] // Weekdays starts
 
 const todayDate = new Date();
 
+
 var mm = String(todayDate.getMonth() + 1).padStart(2, '0'); //January is 0!
 var monthCounter = 0; // Used to call getWeekDayArr()
 
@@ -181,6 +182,7 @@ function calendarIconButtons() {
         updateBtn.classList.remove("hideBtn")
         addHabitBtn.classList.add("hideBtn")
         let habitData = getHabit(this.id); //send calendarIconBtn's ID the the function in dao to retrieve data
+
         document.getElementById("createHabitName").value = habitData.name;
         document.getElementById("createHabitDescription").value = habitData.description;
         document.getElementById("downTextIcon").innerHTML = habitData.icon;

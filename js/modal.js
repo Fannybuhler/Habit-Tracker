@@ -54,26 +54,34 @@ let updateBtn = document.getElementById("updateButton");
 updateBtn.addEventListener("click", addHabit);
 
 // Form validation
-const nameValidation = document.getElementById("createHabitName");
+const nameValidation = document.querySelector(".text-input");
 
 function addHabit(){
   let createHabitName = document.getElementById("createHabitName").value;
-  let dropIcon = document.getElementById("dropIcon").getElementsByTagName("svg")[0].outerHTML;
+
+  let dropIconContainer = document.getElementById("dropIcon")
+  let dropIcon = dropIconContainer.getElementsByTagName("svg")[0].outerHTML;
+
   let dropColor = document.getElementById("dropColor")
   let rbgDropColor = dropColor.style.backgroundColor;
+
   let createHabitDescription = document.getElementById("createHabitDescription").value;
   let dates = {}
-  if(getHabit(createHabitName)!=null){
+
+  if(getHabit(createHabitName)!=null){ // Habit exists
     let habitData = getHabit(createHabitName);
     dates = habitData.dates
   }
+  
   if (nameValidation.value.length === 0){
-    //createHabitName.style.border = "0.5px solid #e1e1e1";
+    nameValidation.style.border = "0.5px solid #28BFCF";
+  } else if (dropColor.style.backgroundColor == "") {
+    dropColor.style.border  = "0.5px solid #28BFCF";
+  } else {
+    daoCreateHabit(createHabitName, dropIcon , rbgDropColor, createHabitDescription, dates);
+    modal.style.display = "none";
+    location.reload();
   }
-
-  daoCreateHabit(createHabitName, dropIcon , rbgDropColor, createHabitDescription, dates);
-  modal.style.display = "none";
-  location.reload();
 }
 
 // Remove-button
