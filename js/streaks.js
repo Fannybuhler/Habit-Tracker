@@ -27,28 +27,47 @@ function calc()  {
 }
 
 
-function test() {
-    
-    
+
+
+
+function seeDays() {
+// Get todays date as number
+let today = new Date();
+let dateToday = today.getDate()
+let yesterday = dateToday - 1
+
+// Get array of Habits dates
 let test = getHabit("Test");
-let dates = test.dates;
+let dates = test.dates['2020-9'];
+dates.sort((a, b) => b - a);
+let lastDayArray = parseInt(dates[0])
+console.log(yesterday);
+console.log(lastDayArray);
+    if(yesterday == lastDayArray) {
+        currentStreak += 1;
+    } 
+}
 
-let datesArr = Object.values(dates); // Needs to find a way into the array
-
-let dateparse = 
-
-
-
-console.log(dateparse);
-
-
+function displayStreak() {
 
 }
 
 
+ 
 
+seeDays();
+console.log('Your current streak is ' + currentStreak);
 
-test();
+function calcStreak() {
+    let tab = [1,0,0,1,1,1];
+    let streaks = tab.reduce((res, n) => 
+      (n ? res[res.length-1]++ : res.push(0), res)
+    , [0]);
+    
+    console.log(Math.max(...streaks));
+}
+
+calcStreak();
 
 
 // parseInt för att convertera till ett number
@@ -64,13 +83,8 @@ if value today = (value - 1) + 1 {
 
 
 
-/* Calculates how many 1:s (days) there are in a row.
-let tab = [1,1,1,1,1];
-let streaks = tab.reduce((res, n) => 
-  (n ? res[res.length-1]++ : res.push(0), res)
-, [0]);
-// Displays the maximum amount of days
-console.log(Math.max(...streaks));
+Calculates how many 1:s (days) there are in a row.
+
 
 
 
