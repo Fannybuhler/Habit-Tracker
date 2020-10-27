@@ -39,10 +39,18 @@
     position: relative;
     transform:rotateX(0deg);
     margin: auto;
+
 }
   
 .card.is-flipped {
-    transform: rotateX(180deg);
+    transform:rotateX(180deg);
+}
+.card.rev-flipp {
+    
+    -webkit-animation: flip-horizontal-bottom 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+    animation: flip-horizontal-bottom 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+    
+
 }
 
 .card.flip-animation {
@@ -61,12 +69,12 @@
 .habit-btn__face--front {
     z-index: 1;
     position: absolute;
+    
 }
 
 .habit-btn__face--back {
     color:green;
     background-color:rgba(0, 128, 0, 0.205);
-
     -webkit-transform: rotatex(180deg);
     
 }
@@ -77,6 +85,27 @@
 /* Flip Animation was extracted from:
     https://animista.net/
 */
+@-webkit-keyframes flip-horizontal-bottom {
+    0% {
+      -webkit-transform: rotateX(0);
+              transform: rotateX(0);
+    }
+    100% {
+      -webkit-transform: rotateX(-180deg);
+              transform: rotateX(-180deg);
+    }
+}
+@keyframes flip-horizontal-bottom {
+0% {
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+}
+100% {
+    -webkit-transform: rotateX(-180deg);
+            transform: rotateX(-180deg);
+}
+}
+
 @-webkit-keyframes flip-scale-2-hor-top {
     0% {
       -webkit-transform: translateY(0) rotateX(0) scale(1);

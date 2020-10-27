@@ -5,7 +5,7 @@ function renderHomeButtons(){
     for(var i = 0; i<habits.length; i++){ // Loop through all habits in localStorage
         const habit = habits[i];
         var container = document.createElement('div')
-        container.className = "card is-flipped";
+        container.className = "card";
         var front = document.createElement('div');
         var back = document.createElement('div');
         front.className ="habit-btn habit-btn__face habit-btn__face--front";
@@ -35,10 +35,11 @@ flipBtns.forEach(elem =>{
 function addFlipp(){
     if(!this.parentNode.classList.contains("flip-animation")){
         this.parentNode.classList.add('flip-animation');
-    }
-    if(!this.parentNode.classList.contains("is-flipped")){
         this.parentNode.classList.add('is-flipped');
     }
+    // if(!this.parentNode.classList.contains("is-flipped")){
+    //     this.parentNode.classList.add('is-flipped');
+    // }
 }
 // Reverse buttons
 var revBtns = document.querySelectorAll('.reverse-flip-btn');
@@ -47,7 +48,22 @@ revBtns.forEach(elem =>{
 })
 function reverseFlip(){
     this.parentNode.parentNode.classList.remove("flip-animation");
+    void this.parentNode.parentNode.offsetWidth;
     this.parentNode.parentNode.classList.remove("is-flipped");
+
+    // if(this.parentNode.parentNode.classList.contains("flip-animation")){
+    //     this.parentNode.parentNode.classList.remove("flip-animation");
+    //     this.parentNode.parentNode.classList.remove("rev-flipp");
+    //     void this.parentNode.parentNode.offsetWidth;
+    //     this.parentNode.parentNode.classList.add("rev-flipp");
+
+    // }else if (this.parentNode.parentNode.classList.contains("is-flipped")){
+    //     this.parentNode.parentNode.classList.remove("is-flipped");
+    //     this.parentNode.parentNode.classList.add("rev-flipp");
+    // }else{
+    //     this.parentNode.parentNode.classList.add("flip-animation");
+    // }
+    
 }
 // function reload(elem){
 //     var content = elem.innerHTML;
