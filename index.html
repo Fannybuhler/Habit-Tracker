@@ -130,7 +130,7 @@
             
             <div class="input-container">
                 <label for="name">Name</label>
-                <input type="text" id="createHabitName" name="name" class="text-input">
+                <input type="text" id="createHabitName" name="name" class="text-input" required>
             </div>
 
             <div class="input-container dropOption">
@@ -176,7 +176,7 @@
             </div>
             <div class="input-container">
                 <textarea type="text" id="createHabitDescription" name="description" 
-                    ng-model="loremIpsum" ng-keyup="autoExpand($event)" placeholder="Description...">
+                    ng-model="loremIpsum" ng-keyup="autoExpand($event)" placeholder="Description..." required>
                 </textarea>
             </div>
             <div class="add-habit-btn-container">
