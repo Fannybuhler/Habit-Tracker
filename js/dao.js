@@ -1,4 +1,4 @@
-function daoCreateHabit(name, icon, color, description){
+function daoCreateHabit(name, icon, color, description, dates){
     const habit = {
         name:name,
         icon:icon,
@@ -6,16 +6,20 @@ function daoCreateHabit(name, icon, color, description){
         description:description,
         currentStreak:0,
         longestStreak:0,
-        dates:{}
+        dates:dates
     }
     localStorage.setItem(name,JSON.stringify(habit))
 }
-function updateHabit(habitName, dates){
+
+
+
+function updateHabitDates(habitName, dates){
     var habit = getHabit(habitName);
 
     habit.dates = dates;
     localStorage.setItem(habitName,JSON.stringify(habit))
 }
+
 function getHabit(name){
     return JSON.parse(localStorage.getItem(name));// Json.parse creates a object out of a string with a objec-form
 }

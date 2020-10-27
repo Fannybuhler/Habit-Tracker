@@ -48,13 +48,30 @@ window.onclick = function(event) {
 // Add-button
 var addHabitBtn = document.querySelector(".add-habit-btn");
 addHabitBtn.addEventListener("click", addHabit);
+
+// Update button
+let updateBtn = document.getElementById("updateButton");
+updateBtn.addEventListener("click", addHabit);
+
+// Form validation
+const nameValidation = document.getElementById("createHabitName");
+
 function addHabit(){
   let createHabitName = document.getElementById("createHabitName").value;
   let dropIcon = document.getElementById("dropIcon").getElementsByTagName("svg")[0].outerHTML;
   let dropColor = document.getElementById("dropColor")
   let rbgDropColor = dropColor.style.backgroundColor;
   let createHabitDescription = document.getElementById("createHabitDescription").value;
-  daoCreateHabit(createHabitName, dropIcon , rbgDropColor, createHabitDescription);
+  let dates = {}
+  if(getHabit(createHabitName)!=null){
+    let habitData = getHabit(createHabitName);
+    dates = habitData.dates
+  }
+  if (nameValidation.value.length === 0){
+    //createHabitName.style.border = "0.5px solid #e1e1e1";
+  }
+
+  daoCreateHabit(createHabitName, dropIcon , rbgDropColor, createHabitDescription, dates);
   modal.style.display = "none";
   location.reload();
 }
@@ -67,13 +84,3 @@ removeBtn.addEventListener("click", () => {
   modal.style.display = "none";
   location.reload();
 })
-
-// Update button
-let updateBtn = document.getElementById("updateButton");
-updateBtn.addEventListener("click", function(){
-  habitName = document.getElementById("createHabitName").value;
-  let habitData = getHabit(habitName);
-  habitDates = habitData.dates;
-  updateHabit(habitName, habitDates);
-  console.log("Update-knappen fungerar");
-});

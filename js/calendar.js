@@ -154,7 +154,7 @@ function dayClick(){ // Handles the calendar-day clicks.
     }else{
         dates[currentDate].push(id); // Set the day as 'selected' by adding it the the array for the date
     }
-    updateHabit(habitName, dates) // Updates tha dates array in the habits localStorage
+    updateHabitDates(habitName, dates) // Updates tha dates array in the habits localStorage
     renderCalendarHabits()
 }
 function daysInMonth (date) {
