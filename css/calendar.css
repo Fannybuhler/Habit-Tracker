@@ -51,8 +51,12 @@ footer {
     border: none;
 }
 
-.calendar-arrow:hover {
-    filter: drop-shadow(0px 10px 15px rgba(37, 37, 37, 0.8));
+#arrow-left:hover {
+    filter: drop-shadow(0px 5px 15px rgba(37, 37, 37, 0.5));
+}
+
+#arrow-right:hover {
+    filter: drop-shadow(0px -5px 15px rgba(37, 37, 37, 0.5));
 }
 
 .card.is-flipped:focus {

@@ -90,6 +90,13 @@
   font-size: 1rem;
 }
 
+.add-habit-btn:hover, 
+.remove-habit-btn:hover, 
+.update-habit-btn:hover {
+  filter: drop-shadow(3px 6px 10px rgba(37, 37, 37, 0.2));
+  cursor: pointer;
+}
+
 .remove-habit-btn {
   border: 5px solid red;
 }
