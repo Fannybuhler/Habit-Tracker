@@ -23,7 +23,7 @@ arrowLeft.addEventListener("click", function(){
     monthCounter-=1
     document.querySelector(".current-month").innerHTML = months[mm];
     changeDays(monthCounter);
-    longestStreak(monthCounter)
+    
 });
 
 const arrowRight = document.getElementById("arrow-right");
@@ -35,7 +35,7 @@ arrowRight.addEventListener("click", function(){
     monthCounter+=1
     document.querySelector(".current-month").innerHTML = months[mm];
     changeDays(monthCounter);
-    longestStreak(monthCounter)
+    
 });
 
 // I created my own modulus function because JS mod is slow and inaccurate
@@ -162,6 +162,7 @@ function dayClick(){ // Handles the calendar-day clicks.
     }
     updateHabitDates(habitName, dates) // Updates tha dates array in the habits localStorage
     renderCalendarHabits()
+    streakInit()
 }
 
 function daysInMonth (date) {

@@ -82,6 +82,17 @@
     cursor: default;
     
 }
+
+/* Display Current streak */
+.display-streak {
+    transform: rotateX(180deg);
+    text-align: center;
+    margin-top: -30px;
+    z-index: 10;
+}
+.hide {
+    display: none;
+}
 /* Flip Animation was extracted from:
     https://animista.net/
 */
