@@ -172,7 +172,8 @@ function dayClick(){ // Handles the calendar-day clicks.
     }
     updateHabitDates(habitName, dates) // Updates tha dates array in the habits localStorage
     renderCalendarHabits()
-    streakInit()
+    streakInit();
+    
 }
 
 function daysInMonth (date) {
