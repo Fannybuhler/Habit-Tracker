@@ -1,11 +1,86 @@
-// Calculate one days lenght
-const oneDay = 24 * 60 * 60 * 1000;
-let currentStreak = 0
+function seeDays() {
+    // Get array of Habits dates
+    let habit = getHabit("Test");
+    let dates = habit.dates['2020-9'];
+    let streak = habit.currentStreak;
+    let daysInMonth = new Date(2020, monthCounter, 0).getDate();
 
-let date = new Date();
-    let today = date.getDay();
-    let yesterday = today - 1;
+    current(dates, streak, daysInMonth);
+
+    longestStreak(dates, daysInMonth);    
+}
+
+function current(dates, currentStreak, daysInMonth) {
+    let today = new Date();
+    let dateToday = today.getDate() -1
+    //let yesterday = dateToday - 1
+    //let lastItem = dates[dates.length - 1];
     
+    dates.sort((a, b) => b - a);
+    
+    if(dateToday == dates[0]){
+        currentStreak += 1;
+    }
+    for(var i = 1; i < dates.length; i++) {
+        if(dates[i] == dateToday-i){
+            currentStreak+=1
+        }else{
+            break;
+        }
+    } 
+    
+    console.log('Your current streak is ' + currentStreak);
+    // Get todays date as number    
+}
+
+function longestStreak(days, daysInMonth) {
+    let tab = [];
+    
+    for(var i = 0; i < daysInMonth; i++) {
+        tab.push(0);
+    } 
+    //let daysClicked = The day the user click becomes the index of which 0 to remove
+    for(var j = 0; j < days.length; j++) {
+        tab[days[j]] = 1;
+    }    
+    let streaks = tab.reduce((res, n) => 
+      (n ? res[res.length-1]++ : res.push(0), res)
+    , [0]);  
+    console.log('Your longest streak this month is ' + Math.max(...streaks));
+}
+
+seeDays();
+
+// parseInt för att convertera till ett number
+
+ //arrayList.push(dates[5]);
+//arrayList.sort(function(a, b){return a-b});
+  
+/*
+if value today = (value - 1) + 1 {
+    currentStreak +=1
+}
+
+ 
+            
+        if(dates === daysInMonth[dateToday]) {
+            
+            currentStreak += 1;
+        } else {
+            currentStreak = 0;
+        }
+
+
+Calculates how many 1:s (days) there are in a row.
+
+
+
+
+if(date + 1 day === true) {
+    insert 1 in tab Array
+} else {
+    insert 0 in tab Array
+}
 
 
 function calc()  {
@@ -24,74 +99,6 @@ function calc()  {
         currentStreak = 0;
     }
     
-}
-
-
-
-
-
-function seeDays() {
-// Get todays date as number
-let today = new Date();
-let dateToday = today.getDate()
-let yesterday = dateToday - 1
-
-// Get array of Habits dates
-let test = getHabit("Test");
-let dates = test.dates['2020-9'];
-dates.sort((a, b) => b - a);
-let lastDayArray = parseInt(dates[0])
-console.log(yesterday);
-console.log(lastDayArray);
-    if(yesterday == lastDayArray) {
-        currentStreak += 1;
-    } 
-}
-
-function displayStreak() {
-
-}
-
-
- 
-
-seeDays();
-console.log('Your current streak is ' + currentStreak);
-
-function calcStreak() {
-    let tab = [1,0,0,1,1,1];
-    let streaks = tab.reduce((res, n) => 
-      (n ? res[res.length-1]++ : res.push(0), res)
-    , [0]);
-    
-    console.log(Math.max(...streaks));
-}
-
-calcStreak();
-
-
-// parseInt för att convertera till ett number
-
- //arrayList.push(dates[5]);
-//arrayList.sort(function(a, b){return a-b});
-  
-/*
-if value today = (value - 1) + 1 {
-    currentStreak +=1
-}
-
-
-
-
-Calculates how many 1:s (days) there are in a row.
-
-
-
-
-if(date + 1 day === true) {
-    insert 1 in tab Array
-} else {
-    insert 0 in tab Array
 }
 
 */

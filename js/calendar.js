@@ -23,6 +23,7 @@ arrowLeft.addEventListener("click", function(){
     monthCounter-=1
     document.querySelector(".current-month").innerHTML = months[mm];
     changeDays(monthCounter);
+    longestStreak(monthCounter)
 });
 
 const arrowRight = document.getElementById("arrow-right");
@@ -34,6 +35,7 @@ arrowRight.addEventListener("click", function(){
     monthCounter+=1
     document.querySelector(".current-month").innerHTML = months[mm];
     changeDays(monthCounter);
+    longestStreak(monthCounter)
 });
 
 // I created my own modulus function because JS mod is slow and inaccurate
@@ -134,6 +136,7 @@ function renderCalendarHabits(){
         habitsContainer.appendChild(container);
     }
 }
+
 function dayClick(){ // Handles the calendar-day clicks.
     // Use split to the the habitName and dayID from the ID of the calendar-day element
     const habitName = this.id.split("-")[0]
@@ -155,6 +158,7 @@ function dayClick(){ // Handles the calendar-day clicks.
     updateHabit(habitName, dates) // Updates tha dates array in the habits localStorage
     renderCalendarHabits()
 }
+
 function daysInMonth (date) {
     const year = (date.split("-")[0]) 
     const month = parseInt(date.split("-")[1])+1
