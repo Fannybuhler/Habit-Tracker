@@ -8,7 +8,7 @@ function streakInit() {
         const habit = habits[i];
         let dates = habit.dates[currentDate];
         if(dates != null){
-            const cur = current(dates);
+            const cur = current(habit);
             hbtStrk[habit.name] = cur;
         }
     }
@@ -38,22 +38,42 @@ function streakInit() {
    
 }
 
-function current(dates) {
+function current(habit) {
+    const todayDate = new Date();
+    let currentDate = todayDate.getFullYear() + "-"+todayDate.getMonth()
     let currentStreak = 0;
-    let today = new Date();
-    let dateToday = today.getDate() -1
+    let dateToday = todayDate.getDate() -1 // 0-30, day of month
+    let dates = habit.dates[currentDate];
     dates.sort((a, b) => b - a);
     if(dateToday == dates[0]){
         currentStreak += 1;
     }
     for(var i = 1; i < dates.length; i++) {
-        if(dates[i] == dateToday-i){
+        if(dateToday-i<1){
+            currentStreak+=1;
+            currentDate = getPrevMonth(currentDate);
+            dates = habit.dates[currentDate];
+            dates.sort((a, b) => b - a);
+            dateToday = daysInMonth(currentDate)-1;   // set dayToday to the last day of prev month
+            i=-1;
+        }
+        else if(dates[i] == dateToday-i){ // 
             currentStreak+=1
         } else{
             break;
         }
     }
     return currentStreak
+}
+function getPrevMonth(date){
+    let year = date.split("-")[0]
+    let month = date.split("-")[1]
+    month-=1;
+    if(""+month=="-1"){
+        month = "11";
+        year -=1;
+    }
+    return (year+"-"+month);
 }
 
 function longest(days, daysInMonth) {
