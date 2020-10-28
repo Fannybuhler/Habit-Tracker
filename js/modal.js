@@ -20,8 +20,9 @@ calendarIconButtons();
 
 //This aint pretty but it resets the modal "manually"
 function clearInputFields() {
+  console.log()
   document.getElementById("createHabitName").value = "";
-  document.getElementById("createHabitDescription").value = "Description..."
+  document.getElementById("createHabitDescription").value = ""
   document.getElementById("downTextIcon").innerHTML = "Pick an Icon";
   document.getElementById("dropColor").style.backgroundColor = "";
   let modalTitle = document.getElementById("modal-title");

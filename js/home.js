@@ -38,11 +38,30 @@ renderHomeButtons();
 // All buttons that are flippable(habit buttons)
 var flipBtns = document.querySelectorAll('.habit-btn__face--front');
 flipBtns.forEach(elem =>{
-    elem.addEventListener('click', habitChecked);
+    elem.addEventListener('click', habitClicked);
 })
-function habitChecked(){
-    
+function habitClicked(){
+    const habitName = this.parentNode.id.split("-")[0];
+    toggleCalendar(habitName);
     addFlipp(this);
+}
+function toggleCalendar(habitName){
+    let habit = getHabit(habitName);
+    var dates = habit.dates;
+    const todayDayInMonth = ""+(todayDate.getDate()-1)
+    if(!(constDateToday in dates)){ // If the currentDate does not exist in the 'dates' array, then we create it
+        dates[constDateToday] = []
+    }
+    if(dates[constDateToday].includes(todayDayInMonth)){ // If the day is already selected, then we deselect it.
+        const index = dates[currentDate].indexOf(todayDayInMonth);
+        if (index > -1) {
+            dates[constDateToday].splice(index, 1);
+        }
+    }else{
+        dates[constDateToday].push(""+(todayDayInMonth)); // Set the day as 'selected' by adding it the the array for the date
+    }
+    updateHabitDates(habit.name, dates);
+    renderCalendarHabits();
 }
 function addFlipp(elem){
     if(!elem.parentNode.classList.contains("flip-animation")){
@@ -53,10 +72,15 @@ function addFlipp(elem){
 // Reverse buttons
 var revBtns = document.querySelectorAll('.reverse-flip-btn');
 revBtns.forEach(elem =>{
-    elem.addEventListener('click', reverseFlip);
+    elem.addEventListener('click', reverseClicked);
 })
-function reverseFlip(){
-    this.parentNode.parentNode.classList.remove("flip-animation");
-    void this.parentNode.parentNode.offsetWidth; // This is a hack to stop the animation reset
-    this.parentNode.parentNode.classList.remove("is-flipped");
+function reverseClicked(){
+    const habitName = this.parentNode.parentNode.id.split("-")[0]
+    toggleCalendar(habitName);
+    reverseFlip(this);
+}
+function reverseFlip(elem){
+    elem.parentNode.parentNode.classList.remove("flip-animation");
+    void elem.parentNode.parentNode.offsetWidth; // This is a hack to stop the animation reset
+    elem.parentNode.parentNode.classList.remove("is-flipped");
 }
