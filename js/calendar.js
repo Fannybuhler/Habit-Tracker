@@ -167,7 +167,7 @@ function dayClick(){ // Handles the calendar-day clicks.
     }else{
         dates[currentDate].push(id); // Set the day as 'selected' by adding it the the array for the date
     }
-    if(id==(todayDate.getDate()-1)){ // If user clicked on todays date in the calendar
+    if(id==(todayDate.getDate()-1) && currentDate == constDateToday){ // If user clicked on todays date in the calendar
         toggleHomeBtn(habitName); // Toggle the home-btn for that habit
     }
     updateHabitDates(habitName, dates) // Updates tha dates array in the habits localStorage
