@@ -12,6 +12,10 @@ body {
 header {
     height: 20vh;
 }
+
+footer {
+    height: 20vh;
+}
 .dates{
     font-size: 23px;
     margin-top: 37px;
