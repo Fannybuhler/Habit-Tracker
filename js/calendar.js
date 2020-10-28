@@ -127,6 +127,15 @@ function renderCalendarHabits(){
                 day.addEventListener("click", dayClick)
                 if(isActiveMonth && doneDays.includes(""+j)){
                     day.style.backgroundColor = habit.color; // Style the days that are selected
+                }else{
+                    day.addEventListener("mouseenter", (elem)=>{
+                        elem.target.style.backgroundColor = habit.color.replace(')', ', 0.25)');
+                    })
+                    day.addEventListener("mouseleave", (elem)=>{
+                        elem.target.style.backgroundColor = ""
+                        elem.target.style.opacity = 1;
+                    })
+
                 }
                 // if(currentDate === constDateToday && todayDate.getDate() == j-1){
                 //     day.classList.add("today-day");

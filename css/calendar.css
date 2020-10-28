@@ -81,13 +81,19 @@ footer {
     justify-content: center;
     align-items: center;
     border-right: 0.5px solid black;
+    cursor: pointer;
 }
 
 .calendar-icon {
     border: 1px solid blue;
 }
 .calendar-day {
-    border-right: 0.5px solid black;
+    border-right: 0.1px solid black;
+    
+}
+.calendar-day:hover {
+    cursor: pointer;
+
 }
 .calendar-icon-rows .unavilable-day{
     background:repeating-linear-gradient(
@@ -98,10 +104,15 @@ footer {
         white 20px
       );
 }
+.calendar-icon-rows .unavilable-day:hover{
+    cursor: default;
+}
 .calendar-icon-rows .future-day{
     background-color: darkgrey;
 }
-
+.calendar-icon-rows .future-day:hover{
+    cursor: default;
+}
 button:hover {
     cursor: pointer;
 }
