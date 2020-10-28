@@ -1,122 +1,109 @@
-function seeDays() {
+var flipBtns = document.querySelectorAll('.habit-btn');
+
+    flipBtns.addEventListener('click', streakInit);
+    console.log(flipBtns);
+
+function streakInit() {
+    const todayDate = new Date();
+    const currentDate = todayDate.getFullYear() + "-"+todayDate.getMonth()
     // Get array of Habits dates
-    let habit = getHabit("Test");
-    let dates = habit.dates['2020-9'];
-    let streak = habit.currentStreak;
-    let daysInMonth = new Date(2020, monthCounter, 0).getDate();
+    var habits = getAllHabits();
+    let hbtStrk = {};
+    for(var i = 0; i<habits.length; i++){ // Loop through all habits in localStorage
+        const habit = habits[i];
+        let dates = habit.dates[currentDate];
+        if(dates != null){
+            const cur = current(dates);
+            hbtStrk[habit.name] = cur;
+        }
+    }
+    let btns = document.querySelectorAll(".is-flipped");
+    
+    btns.forEach(btn =>{
+        
+        const currentHabit = btn.id.split("-")[0];
+        let container = document.getElementById(currentHabit + '-home-btn');
+        let displayStreak = document.getElementById(currentHabit + 'streak');
+        let changeStreakText = 'Your current streak is ' + hbtStrk[currentHabit];
 
-    current(dates, streak, daysInMonth);
-
-    longestStreak(dates, daysInMonth);    
+        if(container.classList == 'card is-flipped') {
+            displayStreak.innerHTML = changeStreakText;
+            console.log('testytytyt')
+            
+        } else {
+            displayStreak.style.display = 'none'
+            console.log('tes')
+        }
+        
+        
+        
+        
+    })
+    // let daysInMonth = new Date(2020, monthCounter, 0).getDate();
+    // current(dates, currentStreak);
+    // longest(dates, longestStreak, currentStreak, daysInMonth);
+    // calculateStreak();
 }
 
-function current(dates, currentStreak, daysInMonth) {
+function current(dates) {
+    let currentStreak = 0;
     let today = new Date();
     let dateToday = today.getDate() -1
-    //let yesterday = dateToday - 1
-    //let lastItem = dates[dates.length - 1];
     
     dates.sort((a, b) => b - a);
     
     if(dateToday == dates[0]){
         currentStreak += 1;
     }
+    
     for(var i = 1; i < dates.length; i++) {
         if(dates[i] == dateToday-i){
             currentStreak+=1
-        }else{
+        } else{
             break;
         }
-    } 
-    
-    console.log('Your current streak is ' + currentStreak);
-    // Get todays date as number    
+    }
+    return currentStreak
 }
 
-function longestStreak(days, daysInMonth) {
+function longest(days, daysInMonth) {
     let tab = [];
-    
+     
     for(var i = 0; i < daysInMonth; i++) {
         tab.push(0);
     } 
+
     //let daysClicked = The day the user click becomes the index of which 0 to remove
     for(var j = 0; j < days.length; j++) {
         tab[days[j]] = 1;
+        let lastDayMonth = parseInt([days[j]]) + 1
+        if(lastDayMonth === daysInMonth) {
+            console.log('test');
+        }
     }    
     let streaks = tab.reduce((res, n) => 
       (n ? res[res.length-1]++ : res.push(0), res)
     , [0]);  
-    console.log('Your longest streak this month is ' + Math.max(...streaks));
-}
 
-seeDays();
-
-// parseInt för att convertera till ett number
-
- //arrayList.push(dates[5]);
-//arrayList.sort(function(a, b){return a-b});
-  
-/*
-if value today = (value - 1) + 1 {
-    currentStreak +=1
-}
-
+    let longestStreak = Math.max(...streaks);
  
-            
-        if(dates === daysInMonth[dateToday]) {
-            
-            currentStreak += 1;
-        } else {
-            currentStreak = 0;
-        }
-
-
-Calculates how many 1:s (days) there are in a row.
-
-
-
-
-if(date + 1 day === true) {
-    insert 1 in tab Array
-} else {
-    insert 0 in tab Array
+    return longestStreak
 }
 
 
-function calc()  {
-    currentArray = []
-    if(currentArray[0] == currentArray[1] + 1) {
-        //If the day before was clicked and you click today, the streak increases by 1
-        console.log('Your on a streak')
-        currentStreak += 1;
-    } else if(a) {
-        //If it's the first day of the month then calculate that the last day of the previous month was clicked
-        currentStreak += 1;
-    }
-    else {
-        //If the previous day was not clicked, the streak goes back to 0
-        console.log('You just lost your streak')
-        currentStreak = 0;
-    }
-    
-}
+//function calculateStreak() {
+    // console.log("VI ÄR I CALCSTREAK")
+    // let longest = longest(dates, longestStreak, currentStreak, daysInMonth);
+    // let current = current();
+    // console.log(current)
 
-*/
+    // if(current == longest) {
+    //     console.log('Your are currently on your longest streak with ' + current)
+    // } else {
+    //     console.log('Your current streak is ' + current);
+    //     console.log('Your longest streak is ' + longest);
+    // }
+//}
 
 
-// when clicked, calculate how many millliseconds left of the day,
-// and add a full day (86 400 000 milliseconds) so that the user have
-// the full day to complete the habit.
-//
-// Make a calculation for when it is the last of the month
-// so that the users streak continues even if the months swich.
-//
-// How do you do if the user adds a habit a day to late. If he/she
-// adds that they completed a task even if the streak ended.
-//
-// If not clicked at midnight, enter 0, otherwise enter 1.
-// calculate how many ones are in a row.
-//
-//
-//
-//
+streakInit();
