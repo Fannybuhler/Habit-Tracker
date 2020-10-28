@@ -24,6 +24,7 @@ arrowLeft.addEventListener("click", function(){
     monthCounter-=1
     document.querySelector(".current-month").innerHTML = months[mm];
     changeDays(monthCounter);
+    longestStreak(monthCounter)
 });
 
 const arrowRight = document.getElementById("arrow-right");
@@ -35,6 +36,7 @@ arrowRight.addEventListener("click", function(){
     monthCounter+=1
     document.querySelector(".current-month").innerHTML = months[mm];
     changeDays(monthCounter);
+    longestStreak(monthCounter)
 });
 
 // I created my own modulus function because JS mod is slow and inaccurate
@@ -137,6 +139,7 @@ function renderCalendarHabits(){
     }
     calendarIconButtons();
 }
+
 function dayClick(){ // Handles the calendar-day clicks.
     // Use split to the the habitName and dayID from the ID of the calendar-day element
     const habitName = this.id.split("-")[0]
@@ -155,9 +158,13 @@ function dayClick(){ // Handles the calendar-day clicks.
     }else{
         dates[currentDate].push(id); // Set the day as 'selected' by adding it the the array for the date
     }
+    if(id==(todayDate.getDate()-1)){ // If user clicked on todays date in the calendar
+        toggleHomeBtn(habitName); // Toggle the home-btn for that habit
+    }
     updateHabitDates(habitName, dates) // Updates tha dates array in the habits localStorage
     renderCalendarHabits()
 }
+
 function daysInMonth (date) {
     const year = (date.split("-")[0]) 
     const month = parseInt(date.split("-")[1])+1
@@ -169,6 +176,21 @@ function addZero(num){ // Add zero to a number with a single digit (ex: addZero(
     }
     return num;
 } 
+function toggleHomeBtn(habitName){
+    let habitElems = document.querySelectorAll(".card");
+    habitElems.forEach(elem => {
+        if(habitName == elem.id.split("-")[0]){
+            if(elem.classList.contains("is-flipped")){
+                elem.classList.remove("flip-animation");
+                void elem.offsetWidth; // This is a hack to stop the animation reset
+                elem.classList.remove("is-flipped");
+            }else{
+                elem.classList.add('flip-animation');
+                elem.classList.add('is-flipped');
+            }
+        }
+    })
+}
 
 // Get every calendar icon to open modal
 function calendarIconButtons() {
