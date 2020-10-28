@@ -45,13 +45,6 @@
 .card.is-flipped {
     transform:rotateX(180deg);
 }
-.card.rev-flipp {
-    
-    -webkit-animation: flip-horizontal-bottom 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-    animation: flip-horizontal-bottom 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-    
-
-}
 
 .card.flip-animation {
 	-webkit-animation: flip-scale-2-hor-top 0.5s ease-out alternate both;
