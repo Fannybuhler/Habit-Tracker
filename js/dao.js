@@ -15,9 +15,8 @@ function daoCreateHabit(name, icon, color, description, dates){
 
 function updateHabitDates(habitName, dates){
     var habit = getHabit(habitName);
-
     habit.dates = dates;
-    localStorage.setItem(habitName,JSON.stringify(habit))
+    localStorage.setItem(habitName,JSON.stringify(habit));
 }
 
 function getHabit(name){

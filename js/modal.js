@@ -20,8 +20,9 @@ calendarIconButtons();
 
 //This aint pretty but it resets the modal "manually"
 function clearInputFields() {
+  console.log()
   document.getElementById("createHabitName").value = "";
-  document.getElementById("createHabitDescription").value = "Description..."
+  document.getElementById("createHabitDescription").value = ""
   document.getElementById("downTextIcon").innerHTML = "Pick an Icon";
   document.getElementById("dropColor").style.backgroundColor = "";
   let modalTitle = document.getElementById("modal-title");
@@ -53,27 +54,50 @@ addHabitBtn.addEventListener("click", addHabit);
 let updateBtn = document.getElementById("updateButton");
 updateBtn.addEventListener("click", addHabit);
 
-// Form validation
-const nameValidation = document.getElementById("createHabitName");
+// Name validation
+const nameValidation = document.querySelector(".text-input");
 
 function addHabit(){
   let createHabitName = document.getElementById("createHabitName").value;
+  let dropIconContainer = document.getElementById("dropIcon")
   let dropIcon = document.getElementById("dropIcon").getElementsByTagName("svg")[0].outerHTML;
+
   let dropColor = document.getElementById("dropColor")
   let rbgDropColor = dropColor.style.backgroundColor;
+
   let createHabitDescription = document.getElementById("createHabitDescription").value;
   let dates = {}
-  if(getHabit(createHabitName)!=null){
+
+  if(getHabit(createHabitName)!=null){ // Habit exists
     let habitData = getHabit(createHabitName);
     dates = habitData.dates
   }
-  if (nameValidation.value.length === 0){
-    //createHabitName.style.border = "0.5px solid #e1e1e1";
-  }
 
-  daoCreateHabit(createHabitName, dropIcon , rbgDropColor, createHabitDescription, dates);
-  modal.style.display = "none";
-  location.reload();
+  if (nameValidation.value.length === 0 || dropIcon.includes("actualArrow") || !rbgDropColor){
+      if(nameValidation.value.length===0){
+        nameValidation.style.border = "0.5px solid #28BFCF";
+      }else{
+        nameValidation.style.border = "";
+      }
+      if(dropIcon.includes("actualArrow")){
+        dropIconContainer.style.border  = "0.5px solid #28BFCF";
+      }else{
+        dropIconContainer.style.border  = ""
+      }
+      if(!rbgDropColor){
+        dropColor.style.border  = "0.5px solid #28BFCF";
+      }else{
+        dropColor.style.border  = "";
+      }
+
+  } else {
+      daoCreateHabit(createHabitName, dropIcon , rbgDropColor, createHabitDescription, dates);
+      modal.style.display = "none";
+      dropColor.style.border  = "";
+      dropIconContainer.style.border  = "";
+      nameValidation.style.border = "";
+      location.reload();
+  }
 }
 
 // Remove-button
