@@ -49,21 +49,9 @@ function habitClicked(){
     addFlipp(this);
 }
 function toggleCalendar(habitName){
-    let habit = getHabit(habitName);
-    var dates = habit.dates;
     const todayDayInMonth = ""+(todayDate.getDate()-1)
-    if(!(constDateToday in dates)){ // If the currentDate does not exist in the 'dates' array, then we create it
-        dates[constDateToday] = []
-    }
-    if(dates[constDateToday].includes(todayDayInMonth)){ // If the day is already selected, then we deselect it.
-        const index = dates[currentDate].indexOf(todayDayInMonth);
-        if (index > -1) {
-            dates[constDateToday].splice(index, 1);
-        }
-    }else{
-        dates[constDateToday].push(""+(todayDayInMonth)); // Set the day as 'selected' by adding it the the array for the date
-    }
-    updateHabitDates(habit.name, dates);
+    const fullDateToday = constDateToday+"-"+todayDayInMonth;
+    addDayToStorage(habitName, fullDateToday);
     renderCalendarHabits();
 }
 function addFlipp(elem){

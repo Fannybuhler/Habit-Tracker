@@ -151,31 +151,34 @@ function renderCalendarHabits(){
 
 function dayClick(){ // Handles the calendar-day clicks.
     // Use split to the the habitName and dayID from the ID of the calendar-day element
-    const habitName = this.id.split("-")[0]
-    const id = this.id.split("-")[1]
-
-    var habit = getHabit(habitName);
-    var dates = habit.dates;
-    if(!(currentDate in dates)){ // If the currentDate does not exist in the 'dates' array, then we create it
-        dates[currentDate] = []
-    }
-    if(dates[currentDate].includes(id)){ // If the day is already selected, then we deselect it.
-        const index = dates[currentDate].indexOf(id);
-        if (index > -1) {
-            dates[currentDate].splice(index, 1);
-        }
-    }else{
-        dates[currentDate].push(id); // Set the day as 'selected' by adding it the the array for the date
-    }
-    if(id==(todayDate.getDate()-1) && currentDate == constDateToday){ // If user clicked on todays date in the calendar
+    const habitName = this.id.split("-")[0];
+    const clickDay = this.id.split("-")[1];
+    const clickDate = currentDate+"-"+clickDay;
+    addDayToStorage(habitName, clickDate)
+    if(clickDay==(todayDate.getDate()-1) && currentDate == constDateToday){ // If user clicked on todays date in the calendar
         toggleHomeBtn(habitName); // Toggle the home-btn for that habit
     }
-    updateHabitDates(habitName, dates) // Updates tha dates array in the habits localStorage
     renderCalendarHabits()
-    streakInit();
-    
+    streakInit();   
 }
-
+function addDayToStorage(habitName, clickDate){ // clickDate has to be in the format of yyyy-mm-dd
+    const clickDay = clickDate.split("-")[2];
+    clickDate = clickDate.split("-")[0]+"-"+clickDate.split("-")[1] // Reformat from yyyy-mm-dd => yyyy-mm
+    var habit = getHabit(habitName);
+    var dates = habit.dates;
+    if(!(clickDate in dates)){ // If the currentDate does not exist in the 'dates' array, then we create it
+        dates[clickDate] = []
+    }
+    if(dates[clickDate].includes(clickDay)){ // If the day is already selected, then we deselect it.
+        const index = dates[clickDate].indexOf(clickDay);
+        if (index > -1) {
+            dates[clickDate].splice(index, 1);
+        }
+    }else{
+        dates[clickDate].push(clickDay); // Set the day as 'selected' by adding it the the array for the date
+    }
+    updateHabitDates(habitName, dates) // Updates tha dates array in the habits localStorage
+}
 function daysInMonth (date) {
     const year = (date.split("-")[0]) 
     const month = parseInt(date.split("-")[1])+1
